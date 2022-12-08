@@ -716,12 +716,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2504922875717949392, guid: 9188d68684fcad548b3d5c12ac77b98b, type: 3}
       propertyPath: turnSpeed
-      value: 3
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 2504922875717949392, guid: 9188d68684fcad548b3d5c12ac77b98b, type: 3}
       propertyPath: thrustSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2504922875717949392, guid: 9188d68684fcad548b3d5c12ac77b98b, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: -5961444602065754339, guid: 52c82d451aa9fb546989e21d653c6cfd, type: 3}
     - target: {fileID: 2628380297137419403, guid: 9188d68684fcad548b3d5c12ac77b98b, type: 3}
       propertyPath: m_Name
       value: Player

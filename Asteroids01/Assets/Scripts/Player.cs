@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rigidbody;
 
+    [SerializeField]
+    private Bullet bulletPrefab;
+
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -32,6 +35,11 @@ public class Player : MonoBehaviour
         {
             turnDirection = 0;
         }
+
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
     }
 
     private void FixedUpdate()
@@ -45,5 +53,11 @@ public class Player : MonoBehaviour
         {
             rigidbody.AddTorque(turnDirection * turnSpeed);
         }
+    }
+
+    private void Shoot()
+    {
+        Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        bullet.Project(transform.up);
     }
 }
