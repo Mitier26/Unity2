@@ -18,4 +18,9 @@ public class Bullet : MonoBehaviour
         rigidbody.AddForce(direction * speed);
         Destroy(gameObject, maxLifeTiem);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
 }
