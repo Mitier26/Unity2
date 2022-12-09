@@ -179,4 +179,4 @@ MonoBehaviour:
   size: 1
   minSize: 0.5
   maxSize: 2
-  speed: 3
+  speed: 20

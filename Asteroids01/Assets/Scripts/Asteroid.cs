@@ -47,6 +47,7 @@ public class Asteroid : MonoBehaviour
                 SpawnSmallAsteroid();
             }
 
+            GameManager.instance.AsteroidDestroyed(this);
             Destroy(gameObject);
         }
     }

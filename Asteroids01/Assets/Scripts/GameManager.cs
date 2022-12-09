@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public Player player;
     public int lives = 3;
     public float spawnDelay = 3.0f;
 
-    public ParticleSystem explosion;
+    public int score = 0;
 
+    public ParticleSystem explosion;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI livesText;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    
     public void PlayerDied()
     {
         lives--;
+        livesText.text = "LIVES : " + lives.ToString();
 
         Asteroid[] asteroid = FindObjectsOfType<Asteroid>();
         
@@ -47,6 +65,19 @@ public class GameManager : MonoBehaviour
 
     public void AsteroidDestroyed(Asteroid asteroid)
     {
+        if(asteroid.size < 0.8f)
+        {
+            score += 100;
+        }
+        else if(asteroid.size < 1.2f)
+        {
+            score += 60;
+        }
+        else
+        {
+            score += 15;
+        }
 
+        scoreText.text = "Score " + score.ToString();
     }
 }
