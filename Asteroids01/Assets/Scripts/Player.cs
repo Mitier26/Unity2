@@ -14,9 +14,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Bullet bulletPrefab;
 
+    private GameManager gameManager;
+
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
@@ -59,5 +62,18 @@ public class Player : MonoBehaviour
     {
         Bullet bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         bullet.Project(transform.up);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Asteroid")
+        {
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.angularVelocity = 0.0f;
+
+            gameObject.SetActive(false);
+
+            gameManager.PlayerDied();
+        }
     }
 }
