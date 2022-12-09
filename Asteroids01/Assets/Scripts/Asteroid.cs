@@ -37,4 +37,32 @@ public class Asteroid : MonoBehaviour
         rigidbody.AddForce(direction * speed);
         Destroy(gameObject, maxLifeTime);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            if(size * 0.5 >= minSize)
+            {
+                SpawnSmallAsteroid();
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
+    private void SpawnSmallAsteroid()
+    {
+        int randomInt = Random.Range(0, 4);
+
+        Vector2 position = transform.position;
+        position += Random.insideUnitCircle * 0.5f;
+
+        for (int i = 0; i <= randomInt; i++)
+        {
+            Asteroid asteroid = Instantiate(this, position, transform.rotation);
+            asteroid.size = size * 0.5f;
+            asteroid.SetTrajectory(Random.insideUnitCircle.normalized);
+        }
+    }
 }
