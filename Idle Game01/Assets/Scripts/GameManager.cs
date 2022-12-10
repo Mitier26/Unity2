@@ -53,10 +53,57 @@ public class GameManager : MonoBehaviour
     {
         coinsPerSecond = productionUpgrade1Level + (productionUpgrade2Power * productionUpgrade2Level);
 
-        coinValueText.text = "Click\n" + coinsClickValue + " + Coins";
-        coinText.text = "Coins : " + coins.ToString("F0");
-        coinsPerSecText.text = coinsPerSecond + " coins/s";
-        clickUpgrade1Text.text = "Click Upgrade 1 \nCost : " + clickUpgrade1Cost.ToString("F0") + "coins\nPower: +1 Click\nLevel : " + clickUpgrade1Level;
+        if(coinsClickValue > 1000)
+        {
+            var exponent = (System.Math.Floor(System.Math.Log10(System.Math.Abs(coinsClickValue))));
+            var mantissa = (coinsClickValue / System.Math.Pow(10, exponent));
+            coinValueText.text = "Click\n" + mantissa.ToString("F0") + "e" + exponent + " Coins";
+        }
+        else
+        {
+            coinValueText.text = "Click\n" + coinsClickValue.ToString("F0") + " + Coins";
+        }
+
+        if (coins > 1000)
+        {
+            var exponent = (System.Math.Floor(System.Math.Log10(System.Math.Abs(coins))));
+            var mantissa = (coins / System.Math.Pow(10, exponent));
+            coinText.text = "Coins : " + mantissa.ToString("F0") + "e" + exponent + " Coins";
+        }
+        else
+        {
+            coinText.text = "Coins : " + coins.ToString("F0");
+        }
+
+        
+        coinsPerSecText.text = coinsPerSecond.ToString("F0") + " coins/s";
+
+        string clickUpgrade1CostString;
+        if (clickUpgrade1Cost > 1000)
+        {
+            var exponent = (System.Math.Floor(System.Math.Log10(System.Math.Abs(clickUpgrade1Cost))));
+            var mantissa = (clickUpgrade1Cost / System.Math.Pow(10, exponent));
+            clickUpgrade1CostString = mantissa.ToString("F0") + "e" + exponent + " Coins";
+        }
+        else
+        {
+            clickUpgrade1CostString = clickUpgrade1Cost.ToString("F0");
+        }
+
+        string clickUpgrade1LevelString;
+        if (clickUpgrade1Level > 1000)
+        {
+            var exponent = (System.Math.Floor(System.Math.Log10(System.Math.Abs(clickUpgrade1Level))));
+            var mantissa = (clickUpgrade1Level / System.Math.Pow(10, exponent));
+            clickUpgrade1LevelString =  mantissa.ToString("F0") + "e" + exponent + " Coins";
+        }
+        else
+        {
+            clickUpgrade1LevelString = clickUpgrade1Level.ToString("F0");
+        }
+
+
+        clickUpgrade1Text.text = "Click Upgrade 1 \nCost : " + clickUpgrade1CostString + "\nPower: +1 Click\nLevel : " + clickUpgrade1LevelString;
         clickUpgrade2Text.text = "Click Upgrade 2 \nCost : " + clickUpgrade2Cost.ToString("F0") + "coins\nPower: +5 Click\nLevel : " + clickUpgrade2Level;
 
         productionUpgrade1Text.text = "Production Upgrade 1\nCost : " + productionUpgrade1Cost.ToString("F0") + " coins\nPower : +1 coins/s\nLevel : " + productionUpgrade1Level;
