@@ -21,4 +21,9 @@ public class Upgrade : MonoBehaviour
     {
         UpgradeManager.instance.BuyUpgrade("production", upgradeID);
     }
+
+    public void BuyGeneratorUpgrade()
+    {
+        UpgradeManager.instance.BuyUpgrade("generator", upgradeID);
+    }
 }
