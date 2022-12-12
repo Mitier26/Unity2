@@ -50,12 +50,15 @@ public class Controller : MonoBehaviour
         if(Instance == null) Instance= this;
     }
 
+    private const string dataFileName = "PlayerData";
     private void Start()
     {
-        data = new Data();
-
+        //data = new Data();
+        data = SaveSystem.SaveExists(dataFileName) ? SaveSystem.LoadData<Data>(dataFileName) : new Data();
         UpgradeManager.instance.StartUpgradeManager();
     }
+
+    public float SaveTime;
 
     private void Update()
     {
@@ -68,6 +71,13 @@ public class Controller : MonoBehaviour
         for(var i = 0; i < data.productionUpgradeLevel.Count; i++)
         {
             data.productionUpgradeGenerated[i] += UpgradesPerSecond(i) * Time.deltaTime;
+        }
+
+        SaveTime += Time.deltaTime * (1 / Time.timeScale);
+        if(SaveTime >= 15)
+        {
+            SaveSystem.SaveData(data, dataFileName);
+            SaveTime = 0;
         }
     }
 

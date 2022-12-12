@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using BreakInfinity;
 using System.Linq;
+using System;
 
+[Serializable]
 public class Data
 {
     public BigDouble potatoes;
