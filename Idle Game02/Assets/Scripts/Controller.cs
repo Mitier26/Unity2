@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Numerics;
 using BreakInfinity;
+using static Settings;
+using static UpgradeManager;
 
 public class Controller : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class Controller : MonoBehaviour
     // public ulong b;
     // public BigInteger c;
 
-    public static Controller Instance;
+    public static Controller controller;
 
     public Data data;
 
@@ -25,7 +24,7 @@ public class Controller : MonoBehaviour
         BigDouble total = 1;
         for(int i = 0; i < data.clickUpgradeLevel.Count; i++)
         {
-            total += UpgradeManager.instance.UpgradeHandlers[0].UpgradesBasePower[i] * data.clickUpgradeLevel[i];
+            total += upgradeManager.UpgradeHandlers[0].UpgradesBasePower[i] * data.clickUpgradeLevel[i];
         }
         return total;
     }
@@ -35,19 +34,19 @@ public class Controller : MonoBehaviour
         BigDouble total = 0;
         for (int i = 0; i < data.productionUpgradeLevel.Count; i++)
         {
-            total += UpgradeManager.instance.UpgradeHandlers[1].UpgradesBasePower[i] * (data.productionUpgradeLevel[i] + data.productionUpgradeGenerated[i]);
+            total += upgradeManager.UpgradeHandlers[1].UpgradesBasePower[i] * (data.productionUpgradeLevel[i] + data.productionUpgradeGenerated[i]);
         }
         return total;
     }
 
     public BigDouble UpgradesPerSecond(int index)
     {
-        return UpgradeManager.instance.UpgradeHandlers[2].UpgradesBasePower[index] * data.generatorUpgradeLevel[index];
+        return upgradeManager.UpgradeHandlers[2].UpgradesBasePower[index] * data.generatorUpgradeLevel[index];
     }
 
     private void Awake()
     {
-        if(Instance == null) Instance= this;
+        if(controller == null) controller= this;
     }
 
     private const string dataFileName = "PlayerData";
@@ -55,14 +54,16 @@ public class Controller : MonoBehaviour
     {
         //data = new Data();
         data = SaveSystem.SaveExists(dataFileName) ? SaveSystem.LoadData<Data>(dataFileName) : new Data();
-        UpgradeManager.instance.StartUpgradeManager();
+        upgradeManager.StartUpgradeManager();
+
+        settings.StartSetting();
     }
 
     public float SaveTime;
 
     private void Update()
     {
-        currentPotatoText.text = $"{data.potatoes:F2} Potatoes";
+        currentPotatoText.text = $"{data.potatoes.Notate():F2} Potatoes";
         potatoPersecondText.text = $"{PotatoPerSecond():F2}/s";
         potatoClickPowerText.text = $"+{ClickPower():F2} Potatoes";
 

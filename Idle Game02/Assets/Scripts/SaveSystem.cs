@@ -124,12 +124,12 @@ public class SaveSystem : MonoBehaviour
             writer.Close();
         }
 
-        Controller.Instance.data = SaveExists(FilePath) ? LoadData<Data>(FilePath) : new Data(); 
+        Controller.controller.data = SaveExists(FilePath) ? LoadData<Data>(FilePath) : new Data(); 
     }
 
     public void Export()
     {
-        Controller.Instance.Save();
+        Controller.controller.Save();
         Directory.CreateDirectory(SavePath);
 
         using (StreamReader reader = new StreamReader($"{SavePath}{FilePath}{FileType}"))

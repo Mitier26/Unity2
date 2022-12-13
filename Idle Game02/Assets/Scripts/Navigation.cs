@@ -19,9 +19,9 @@ public class Navigation : MonoBehaviour
 
     public void SwitchUpgrades(string location)
     {
-        UpgradeManager.instance.UpgradeHandlers[0].UpgradesScroll.gameObject.SetActive(false);
-        UpgradeManager.instance.UpgradeHandlers[1].UpgradesScroll.gameObject.SetActive(false);
-        UpgradeManager.instance.UpgradeHandlers[2].UpgradesScroll.gameObject.SetActive(false);
+        UpgradeManager.upgradeManager.UpgradeHandlers[0].UpgradesScroll.gameObject.SetActive(false);
+        UpgradeManager.upgradeManager.UpgradeHandlers[1].UpgradesScroll.gameObject.SetActive(false);
+        UpgradeManager.upgradeManager.UpgradeHandlers[2].UpgradesScroll.gameObject.SetActive(false);
 
         clickUpgradesSelected.SetActive(false);
         productionUpgradesSelected.SetActive(false);
@@ -34,17 +34,17 @@ public class Navigation : MonoBehaviour
         switch (location)
         {
             case "click":
-                UpgradeManager.instance.UpgradeHandlers[0].UpgradesScroll.gameObject.SetActive(true);
+                UpgradeManager.upgradeManager.UpgradeHandlers[0].UpgradesScroll.gameObject.SetActive(true);
                 clickUpgradesSelected.SetActive(true);
                 clickUpgradesTitleText.color = Color.white;
                 break;
             case "production":
-                UpgradeManager.instance.UpgradeHandlers[1].UpgradesScroll.gameObject.SetActive(true);
+                UpgradeManager.upgradeManager.UpgradeHandlers[1].UpgradesScroll.gameObject.SetActive(true);
                 productionUpgradesSelected.SetActive(true);
                 productionUpgradesTitleText.color = Color.white;
                 break;
             case "generator":
-                UpgradeManager.instance.UpgradeHandlers[2].UpgradesScroll.gameObject.SetActive(true);
+                UpgradeManager.upgradeManager.UpgradeHandlers[2].UpgradesScroll.gameObject.SetActive(true);
                 generatorUpgradesSelected.SetActive(true);
                 generatorUpgradesTitleText.color = Color.white;
                 break;

@@ -7,21 +7,21 @@ using UnityEngine.UI;
 
 public class UpgradeManager : MonoBehaviour
 {
-    public static UpgradeManager instance;
+    public static UpgradeManager upgradeManager;
 
     public UpgradeHandler[] UpgradeHandlers;
 
 
     private void Awake()
     {
-        instance = this; 
+        upgradeManager = this; 
     }
     public void StartUpgradeManager()
     {
-        Methods.UpgradeCheck(Controller.Instance.data.clickUpgradeLevel, 4);
-        Methods.UpgradeCheck(Controller.Instance.data.productionUpgradeLevel, 4);
-        Methods.UpgradeCheck(Controller.Instance.data.productionUpgradeGenerated, 4);
-        Methods.UpgradeCheck(Controller.Instance.data.generatorUpgradeLevel, 4);
+        Methods.UpgradeCheck(Controller.controller.data.clickUpgradeLevel, 4);
+        Methods.UpgradeCheck(Controller.controller.data.productionUpgradeLevel, 4);
+        Methods.UpgradeCheck(Controller.controller.data.productionUpgradeGenerated, 4);
+        Methods.UpgradeCheck(Controller.controller.data.generatorUpgradeLevel, 4);
 
         UpgradeHandlers[0].UpgradeNames = new[] { "Click Power +1", "Click Power +5", "Click Power +10", "Click Power +25" };
         UpgradeHandlers[1].UpgradeNames = new[] { "+1 Potato/s", "+2 Potatoes/s", "+10 Potatoes/s", "+100 Potatoes/s" };
@@ -49,9 +49,9 @@ public class UpgradeManager : MonoBehaviour
         UpgradeHandlers[2].UpgradesBasePower = new BigDouble[] { 0.1, 0.05, 0.02, 0.01 };
         UpgradeHandlers[2].UpgradesUnlock = new BigDouble[] { 2500, 5e3, 5e3, 5e5 };
 
-        CreateUpgrades(Controller.Instance.data.clickUpgradeLevel, 0);
-        CreateUpgrades(Controller.Instance.data.productionUpgradeLevel, 1);
-        CreateUpgrades(Controller.Instance.data.generatorUpgradeLevel, 2);
+        CreateUpgrades(Controller.controller.data.clickUpgradeLevel, 0);
+        CreateUpgrades(Controller.controller.data.productionUpgradeLevel, 1);
+        CreateUpgrades(Controller.controller.data.generatorUpgradeLevel, 2);
 
         void CreateUpgrades<T>(List<T> level, int index)
         {
@@ -73,9 +73,9 @@ public class UpgradeManager : MonoBehaviour
 
     public void Update()
     {
-        UpgradeUnlockSystem(Controller.Instance.data.potatoes, UpgradeHandlers[0].UpgradesUnlock, 0);
-        UpgradeUnlockSystem(Controller.Instance.data.potatoes, UpgradeHandlers[1].UpgradesUnlock, 1);
-        UpgradeUnlockSystem(Controller.Instance.data.potatoes, UpgradeHandlers[2].UpgradesUnlock, 2);
+        UpgradeUnlockSystem(Controller.controller.data.potatoes, UpgradeHandlers[0].UpgradesUnlock, 0);
+        UpgradeUnlockSystem(Controller.controller.data.potatoes, UpgradeHandlers[1].UpgradesUnlock, 1);
+        UpgradeUnlockSystem(Controller.controller.data.potatoes, UpgradeHandlers[2].UpgradesUnlock, 2);
 
         void UpgradeUnlockSystem(BigDouble currency, BigDouble[] unlock, int index)
         {
@@ -89,7 +89,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpdateUpgradeUI(string type, int upgradeID = -1)
     {
-        var data = Controller.Instance.data;
+        var data = Controller.controller.data;
 
         switch(type)
         {
@@ -139,7 +139,7 @@ public class UpgradeManager : MonoBehaviour
 
     public BigDouble UpgradeCost(string type, int UpgradeID)
     {
-        var data = Controller.Instance.data;
+        var data = Controller.controller.data;
 
         switch(type)
         {
@@ -167,7 +167,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void BuyUpgrade(string type, int UpgradeID)
     {
-        var data = Controller.Instance.data;
+        var data = Controller.controller.data;
 
         switch(type)
         {
@@ -187,7 +187,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void Buy(List<int> upgradeLevels, string type, int UpgradeID)
     {
-        var data = Controller.Instance.data;
+        var data = Controller.controller.data;
 
         if (data.potatoes >= UpgradeCost(type, UpgradeID))
         {
@@ -200,7 +200,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void Buy(List<BigDouble> upgradeLevels, string type, int UpgradeID)
     {
-        var data = Controller.Instance.data;
+        var data = Controller.controller.data;
 
         if (data.potatoes >= UpgradeCost(type, UpgradeID))
         {

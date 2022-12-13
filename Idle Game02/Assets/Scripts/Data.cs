@@ -15,6 +15,7 @@ public class Data
     public List<BigDouble> productionUpgradeGenerated;
     public List<int> generatorUpgradeLevel;
 
+    public int notation;
     public Data()
     {
         potatoes = 0;
@@ -24,5 +25,7 @@ public class Data
         productionUpgradeLevel = new BigDouble[4].ToList();
         productionUpgradeGenerated = new BigDouble[4].ToList();
         generatorUpgradeLevel = new int[4].ToList();
+
+        notation = 0;
     }
 }
