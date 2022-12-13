@@ -51,7 +51,7 @@ public class Controller : MonoBehaviour
     }
 
     private const string dataFileName = "PlayerData";
-    private void Start()
+    public void Start()
     {
         //data = new Data();
         data = SaveSystem.SaveExists(dataFileName) ? SaveSystem.LoadData<Data>(dataFileName) : new Data();
@@ -77,8 +77,14 @@ public class Controller : MonoBehaviour
         if(SaveTime >= 15)
         {
             SaveSystem.SaveData(data, dataFileName);
+            Save();
             SaveTime = 0;
         }
+    }
+
+    public void Save()
+    {
+        SaveSystem.SaveData(data, dataFileName);
     }
 
     public void CreatePotato()

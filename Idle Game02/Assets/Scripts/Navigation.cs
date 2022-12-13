@@ -14,6 +14,9 @@ public class Navigation : MonoBehaviour
     public TMP_Text productionUpgradesTitleText;
     public TMP_Text generatorUpgradesTitleText;
 
+    public GameObject HomeScreen;
+    public GameObject SettingScreen;
+
     public void SwitchUpgrades(string location)
     {
         UpgradeManager.instance.UpgradeHandlers[0].UpgradesScroll.gameObject.SetActive(false);
@@ -45,6 +48,23 @@ public class Navigation : MonoBehaviour
                 generatorUpgradesSelected.SetActive(true);
                 generatorUpgradesTitleText.color = Color.white;
                 break;
+        }
+    }
+
+    public void Navigate(string location)
+    {
+        HomeScreen.SetActive(false);
+        SettingScreen.SetActive(false);
+
+        switch(location)
+        {
+            case "Home":
+                HomeScreen.SetActive(true);
+                break;
+            case "Setting":
+                SettingScreen.SetActive(true);
+                break;
+
         }
     }
 }

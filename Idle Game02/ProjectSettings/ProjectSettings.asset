@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: MalkangMolkangSoft
   productName: Idle Game02
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -694,8 +694,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Idle Game02
-  metroPackageVersion: 
+  metroPackageName: IdleGame02
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -703,7 +703,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Idle Game02
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Idle Game02
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
