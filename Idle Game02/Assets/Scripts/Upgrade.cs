@@ -13,6 +13,9 @@ public class Upgrade : MonoBehaviour
     public TMP_Text costText;
 
     public Image Fill;
+    public Image FillSmooth;
+
+    public double SmoothValue;
 
     public void BuyClickUpgrade()
     {

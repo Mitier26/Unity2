@@ -91,11 +91,16 @@ public class UpgradeManager : MonoBehaviour
 
         void UpgradeFillManager(string type, int index)
         {
-            if (UpgradeHandlers[index].UpgradesScroll.gameObject.activeSelf)
+            if (!UpgradeHandlers[index].UpgradesScroll.gameObject.activeSelf) return;
+            
+            for (var i = 0; i < UpgradeHandlers[index].Upgrades.Count; i++)
             {
-                for (var i = 0; i < UpgradeHandlers[index].Upgrades.Count; i++)
-                    UpgradeHandlers[index].Upgrades[i].Fill.fillAmount = Methods.Fill(Controller.controller.data.potatoes, UpgradeCost(type, i));
+                UpgradeHandlers[index].Upgrades[i].Fill.fillAmount = Methods.Fill(Controller.controller.data.potatoes, UpgradeCost(type, i));
+                Methods.FillSmooth(ref UpgradeHandlers[index].Upgrades[i].SmoothValue,  UpgradeHandlers[index].Upgrades[i].Fill.fillAmount);
+                UpgradeHandlers[index].Upgrades[i].FillSmooth.fillAmount = Methods.Fill(UpgradeHandlers[index].Upgrades[i].SmoothValue, UpgradeCost(type, i));
             }
+                    
+            
         }
         if (UpgradeHandlers[1].UpgradesScroll.gameObject.activeSelf) UpdateUpgradeUI("production");
     }

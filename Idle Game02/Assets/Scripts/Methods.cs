@@ -134,4 +134,12 @@ public static class Methods
         if (fill < 0.01) return 0;
         return (float)fill.ToDouble(); ;
     }
+
+    public static void FillSmooth(ref double smoothValue, double actualValue, float speed = 100)
+    {
+        if(smoothValue < actualValue)
+            smoothValue += (actualValue - smoothValue) / speed + 0.1 * Time.deltaTime;
+        else if (smoothValue > actualValue)
+            smoothValue -= (smoothValue - actualValue) / speed + 0.1 * Time.deltaTime;
+    }
 }
