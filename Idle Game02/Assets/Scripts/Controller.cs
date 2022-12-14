@@ -36,7 +36,7 @@ public class Controller : MonoBehaviour
         {
             total += upgradeManager.UpgradeHandlers[1].UpgradesBasePower[i] * (data.productionUpgradeLevel[i] + data.productionUpgradeGenerated[i]);
         }
-        return total;
+        return total + PrestigeManager.prestigeManager.PrestigeEffect();
     }
 
     public BigDouble UpgradesPerSecond(int index)

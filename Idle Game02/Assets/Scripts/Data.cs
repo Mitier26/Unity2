@@ -9,6 +9,7 @@ using System;
 public class Data
 {
     public BigDouble potatoes;
+    public BigDouble goldenPotatoes;
 
     public List<int> clickUpgradeLevel;
     public List<BigDouble> productionUpgradeLevel;
@@ -19,6 +20,7 @@ public class Data
     public Data()
     {
         potatoes = 0;
+        goldenPotatoes = 0;
 
         //clickUpgradeLevel = Methods.CreateList<BigDouble>(4);
         clickUpgradeLevel = new int[4].ToList();

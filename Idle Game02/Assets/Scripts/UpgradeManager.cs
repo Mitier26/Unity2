@@ -102,7 +102,19 @@ public class UpgradeManager : MonoBehaviour
                     
             
         }
-        if (UpgradeHandlers[1].UpgradesScroll.gameObject.activeSelf) UpdateUpgradeUI("production");
+        if (UpgradeHandlers[1].UpgradesScroll.gameObject.activeSelf)
+        {
+            UpgradeHandlers[1].UpgradeNames = new[]
+            {
+                $"+{(UpgradeHandlers[1].UpgradesBasePower[0] * PrestigeManager.prestigeManager.PrestigeEffect())} Potatoes/s",
+                $"+{(UpgradeHandlers[1].UpgradesBasePower[1] * PrestigeManager.prestigeManager.PrestigeEffect())} Potatoes/s",
+                $"+{(UpgradeHandlers[1].UpgradesBasePower[2] * PrestigeManager.prestigeManager.PrestigeEffect())} Potatoes/s",
+                $"+{(UpgradeHandlers[1].UpgradesBasePower[3] * PrestigeManager.prestigeManager.PrestigeEffect())} Potatoes/s",
+            };
+
+            UpdateUpgradeUI("production");
+
+        }
     }
 
     public void UpdateUpgradeUI(string type, int upgradeID = -1)
