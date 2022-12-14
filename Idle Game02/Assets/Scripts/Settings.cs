@@ -21,7 +21,7 @@ public class Settings : MonoBehaviour
     }
     public void StartSetting()
     {
-        NotationNames = new[] { "Standard", "Scientific" };
+        NotationNames = new[] { "Standard", "Scientific", "Engineering", "Log" };
         Notation = controller.data.notation;
         SyncSetting();
     }

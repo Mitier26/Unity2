@@ -115,8 +115,8 @@ public class UpgradeManager : MonoBehaviour
         void UpdateUI(int ID)
         {
             
-            upgrades[ID].levelText.text = upgradeLevels[ID].ToString("F2");
-            upgrades[ID].costText.text = $"Cost: {UpgradeCost(type, ID)} Potatoes";
+            upgrades[ID].levelText.text = upgradeLevels[ID].ToString("F0");
+            upgrades[ID].costText.text = $"Cost: {UpgradeCost(type, ID).Notate()} Potatoes";
             upgrades[ID].naneText.text = upgradeName[ID];
         }
     }
