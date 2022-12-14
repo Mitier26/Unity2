@@ -199,9 +199,22 @@ public class UpgradeManager : MonoBehaviour
                 Buy(data.generatorUpgradeLevel, type, UpgradeID);
                 break;
         }
-
-        
     }
+
+    public void BuyMax()
+    {
+        var data = Controller.controller.data;
+
+        for (int i = 0; i < data.clickUpgradeLevel.Count; i++)
+            Methods.BuyMax(ref data.potatoes, ref data.clickUpgradeLevel, i, UpgradeHandlers[0].UpgradesBaseCost[i], (float)UpgradeHandlers[0].UpgradesCostMult[i].ToDouble());
+
+        for (int i = 0; i < data.clickUpgradeLevel.Count; i++)
+            Methods.BuyMax(ref data.potatoes, ref data.productionUpgradeLevel, i, UpgradeHandlers[1].UpgradesBaseCost[i], (float)UpgradeHandlers[1].UpgradesCostMult[i].ToDouble());
+
+        for (int i = 0; i < data.clickUpgradeLevel.Count; i++)
+            Methods.BuyMax(ref data.potatoes, ref data.generatorUpgradeLevel, i, UpgradeHandlers[2].UpgradesBaseCost[i], (float)UpgradeHandlers[2].UpgradesCostMult[i].ToDouble());
+    }
+
 
     private void Buy(List<int> upgradeLevels, string type, int UpgradeID)
     {

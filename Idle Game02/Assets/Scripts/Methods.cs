@@ -142,4 +142,49 @@ public static class Methods
         else if (smoothValue > actualValue)
             smoothValue -= (smoothValue - actualValue) / speed + 0.1 * Time.deltaTime;
     }
+
+    public static BigDouble Cost(BigDouble baseCost, float costMult, int level) => baseCost * BigDouble.Pow((BigDouble)costMult, level);
+    public static BigDouble Cost(BigDouble baseCost, float costMult, BigDouble level) => baseCost * BigDouble.Pow((BigDouble)costMult, level);
+
+    public static void BuyMax(ref BigDouble currency, ref int level, BigDouble baseCost, BigDouble costMult)
+    {
+        int n = (int)(BigDouble.Floor((BigDouble)BigDouble.Log((currency * (BigDouble)(costMult -1)) / Cost(baseCost, (float)costMult.ToDouble(), level) + 1,costMult))).ToDouble();
+        BigDouble cost = Cost(baseCost, (float)costMult.ToDouble(), level) * ((BigDouble.Pow(costMult, n) - (BigDouble)1) / (costMult - (BigDouble)1));
+
+        if (currency < cost) return;
+        currency -= cost;
+        level += n;
+
+        UpgradeManager.upgradeManager.UpdateUpgradeUI("click");
+        UpgradeManager.upgradeManager.UpdateUpgradeUI("production");
+        UpgradeManager.upgradeManager.UpdateUpgradeUI("generator");
+    }
+
+    public static void BuyMax(ref BigDouble currency, ref List<int> level, int index, BigDouble baseCost, BigDouble costMult)
+    {
+        int n = (int)(BigDouble.Floor((BigDouble)BigDouble.Log((currency * (BigDouble)(costMult - 1)) / Cost(baseCost, (float)costMult.ToDouble(), level[index]) + (BigDouble)1, costMult))).ToDouble();
+        BigDouble cost = Cost(baseCost, (float)costMult.ToDouble(), level[index]) * ((BigDouble.Pow(costMult, n) - (BigDouble)1) / (costMult - (BigDouble)1));
+
+        if (currency < cost) return;
+        currency -= cost;
+        level[index] += n;
+
+        UpgradeManager.upgradeManager.UpdateUpgradeUI("click");
+        UpgradeManager.upgradeManager.UpdateUpgradeUI("production");
+        UpgradeManager.upgradeManager.UpdateUpgradeUI("generator");
+    }
+
+    public static void BuyMax(ref BigDouble currency, ref List<BigDouble> level, int index, BigDouble baseCost, BigDouble costMult)
+    {
+        BigDouble n = (int)(BigDouble.Floor((BigDouble)BigDouble.Log((currency * (BigDouble)(costMult - 1)) / Cost(baseCost, (float)costMult.ToDouble(), level[index]) + (BigDouble)1, costMult))).ToDouble();
+        BigDouble cost = Cost(baseCost, (float)costMult.ToDouble(), level[index]) * ((BigDouble.Pow(costMult, n) - (BigDouble)1) / (costMult - (BigDouble)1));
+
+        if (currency < cost) return;
+        currency -= cost;
+        level[index] += n;
+
+        UpgradeManager.upgradeManager.UpdateUpgradeUI("click");
+        UpgradeManager.upgradeManager.UpdateUpgradeUI("production");
+        UpgradeManager.upgradeManager.UpdateUpgradeUI("generator");
+    }
 }
