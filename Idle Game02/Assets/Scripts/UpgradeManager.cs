@@ -1,5 +1,6 @@
 using BreakInfinity;
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -84,6 +85,18 @@ public class UpgradeManager : MonoBehaviour
                     UpgradeHandlers[index].Upgrades[i].gameObject.SetActive(currency >= unlock[i]);
         }
 
+        UpgradeFillManager("click", 0);
+        UpgradeFillManager("production", 1);
+        UpgradeFillManager("generator", 2);
+
+        void UpgradeFillManager(string type, int index)
+        {
+            if (UpgradeHandlers[index].UpgradesScroll.gameObject.activeSelf)
+            {
+                for (var i = 0; i < UpgradeHandlers[index].Upgrades.Count; i++)
+                    UpgradeHandlers[index].Upgrades[i].Fill.fillAmount = Methods.Fill(Controller.controller.data.potatoes, UpgradeCost(type, i));
+            }
+        }
         if (UpgradeHandlers[1].UpgradesScroll.gameObject.activeSelf) UpdateUpgradeUI("production");
     }
 
@@ -114,10 +127,10 @@ public class UpgradeManager : MonoBehaviour
 
         void UpdateUI(int ID)
         {
-            
             upgrades[ID].levelText.text = upgradeLevels[ID].ToString("F0");
             upgrades[ID].costText.text = $"Cost: {UpgradeCost(type, ID).Notate()} Potatoes";
-            upgrades[ID].naneText.text = upgradeName[ID];
+            upgrades[ID].nameText.text = upgradeName[ID];
+            //upgrades[ID].Fill.fillAmount = (float)Methods.Fill(Controller.controller.data.potatoes, UpgradeCost(type, ID));
         }
     }
 
@@ -131,9 +144,9 @@ public class UpgradeManager : MonoBehaviour
         void UpdateUI(int ID)
         {
             BigDouble generated = upgradesGenerated == null ? 0 : upgradesGenerated[ID];
-            upgrades[ID].levelText.text = (upgradeLevels[ID] + generated).ToString("F2");
+            upgrades[ID].levelText.text = (upgradeLevels[ID] + generated).ToString("F0");
             upgrades[ID].costText.text = $"Cost: {UpgradeCost(type, ID)} Potatoes";
-            upgrades[ID].naneText.text = upgradeName[ID];
+            upgrades[ID].nameText.text = upgradeName[ID];
         }
     }
 

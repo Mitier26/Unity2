@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 public static class Methods
 {
     //public static List<T> CreateList<T>(int capacity) => Enumerable.Repeat(default(T), capacity).ToList();
+    
 
     private static readonly List<string> StandardNotation = new List<string>
     {
@@ -123,5 +124,14 @@ public static class Methods
             //list = CreateList<T>(length);
             list = new T[length].ToList();
         }
+    }
+
+    public static float Fill(BigDouble left, BigDouble right)
+    {
+        var fill = left / right;
+
+        if (fill > 1) return 1;
+        if (fill < 0.01) return 0;
+        return (float)fill.ToDouble(); ;
     }
 }

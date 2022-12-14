@@ -9,8 +9,10 @@ public class Upgrade : MonoBehaviour
     public int upgradeID;
     public Image upgradeButton;
     public TMP_Text levelText;
-    public TMP_Text naneText;
+    public TMP_Text nameText;
     public TMP_Text costText;
+
+    public Image Fill;
 
     public void BuyClickUpgrade()
     {
