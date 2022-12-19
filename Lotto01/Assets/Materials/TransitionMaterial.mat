@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TransitionMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 18b46d71ecd52fc4493131095b0723ab, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 179661810f6d0eb49a17c5cd73229f2f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -60,5 +60,5 @@ Material:
     m_Floats:
     - _Progress: 1
     m_Colors:
-    - _TransitionColor: {r: 0.6226415, g: 0.36124957, b: 0.36124957, a: 0}
+    - _TransitionColor: {r: 0.34963512, g: 0.764151, b: 0.35800093, a: 0}
   m_BuildTextureStacks: []
