@@ -9,7 +9,7 @@ using UnityEngine.Rendering;
 
 public class Lotto01 : MonoBehaviour
 {
-    // ¹öÆ°À» Å¬¸®ÇÏ¸é ¼ıÀÚ¸¦ ¼±ÅÃ.
+    // ë²„íŠ¼ì„ í´ë¦¬í•˜ë©´ ìˆ«ìë¥¼ ì„ íƒ.
 
     public int numberCount = 45;
     public int selectCount = 6;
