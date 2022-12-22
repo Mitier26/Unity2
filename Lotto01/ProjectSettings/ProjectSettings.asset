@@ -8,12 +8,12 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 0
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Lotto01
+  companyName: MalkangMolkangSoft
+  productName: LuckyGoldenNumber
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -39,7 +39,9 @@ PlayerSettings:
     y: 0
     width: 1
     height: 1
-  m_SplashScreenLogos: []
+  m_SplashScreenLogos:
+  - logo: {fileID: 21300000, guid: f09deb953ee1947b58de891e56671acc, type: 3}
+    duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -153,6 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.luckygoldennumber.malkangmolkangsoft
     Standalone: com.DefaultCompany.2DProject
   buildNumber:
     Standalone: 0
@@ -238,18 +241,18 @@ PlayerSettings:
   templatePackageId: com.unity.template.2d@7.0.1
   templateDefaultScene: Assets/Scenes/SampleScene.unity
   useCustomMainManifest: 0
-  useCustomLauncherManifest: 0
+  useCustomLauncherManifest: 1
   useCustomMainGradleTemplate: 0
   useCustomLauncherGradleManifest: 0
   useCustomBaseGradleTemplate: 0
   useCustomGradlePropertiesTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 1
+  AndroidTargetArchitectures: 3
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: E:/UnityKeys/luckygoldennumber.keystore
+  AndroidKeyaliasName: luckygoldennumber key
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
@@ -257,7 +260,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -268,7 +271,14 @@ PlayerSettings:
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: d917b52048b9bb849b7f84ed3dec212c, type: 3}
+      m_Width: 128
+      m_Height: 128
+      m_Kind: 0
   m_BuildTargetPlatformIcons:
   - m_BuildTarget: Android
     m_Icons:
@@ -675,10 +685,27 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    EmbeddedLinux: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    GameCoreScarlett: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    GameCoreXboxOne: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    LinuxHeadlessSimulation: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    Nintendo Switch: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    PS4: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    PS5: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    QNX: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    Stadia: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    Standalone: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    WebGL: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    Windows Store Apps: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    XboxOne: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    iPhone: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
+    tvOS: EASY_MOBILE;EASY_MOBILE_PRO;EM_URP;EM_ADMOB
   additionalCompilerArguments: {}
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Android: 1
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
   managedStrippingLevel: {}
@@ -686,7 +713,7 @@ PlayerSettings:
   suppressCommonWarnings: 1
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
-  selectedPlatform: 0
+  selectedPlatform: 2
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1
