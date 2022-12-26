@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
 {
-    public GameObject BallPrefab;
+    public Ball BallPrefab;
 
     private int maxCount = 45;
-    private float spawnerPower = 20f;
-    private float spawnerDelay = 0.3f;
+    public float spawnerPower = 20f;
+    public float spawnerDelay = 0.3f;
+    public float ballSize = 0.5f;
+    public bool isShow = true;
 
-    private int[] numbers = new int[45];
+    private int[] numbers;
 
     private void Start()
     {
+        numbers = new int[maxCount];
         StartCoroutine(Spawner());
     }
     
@@ -26,12 +29,13 @@ public class BallSpawner : MonoBehaviour
 
         while(count < maxCount)
         {
-            GameObject ball = Instantiate(BallPrefab, transform.position, Quaternion.identity);
+            Ball ball = Instantiate(BallPrefab, transform.position, Quaternion.identity);
 
-            ball.GetComponent<Ball>().number = numbers[count];
-            ball.SetActive(true);
-            ball.GetComponent<Rigidbody2D>().AddForce(Random.insideUnitCircle * spawnerPower);
-
+            ball.number = numbers[count];
+            ball.gameObject.SetActive(true);
+            ball.gameObject.GetComponent<Rigidbody2D>().AddForce(Random.insideUnitCircle * spawnerPower);
+            ball.gameObject.transform.localScale = Vector3.one * ballSize;
+            ball.isShow = isShow;
             count++;
             yield return new WaitForSeconds(spawnerDelay);
         }

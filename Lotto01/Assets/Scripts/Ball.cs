@@ -11,12 +11,18 @@ public class Ball : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     public TMP_Text text;
+    public Canvas canvas;
+
+    public bool isShow;
 
     
     private void OnEnable()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        canvas.enabled = isShow;
         text.text = number.ToString();
+
         SetColor(number);
     }
 
