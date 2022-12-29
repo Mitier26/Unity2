@@ -6,9 +6,9 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(EdgeCollider2D))]
 public class EdgeInvert : MonoBehaviour
 {
-    public Collecter collecterPrefab;
+    
     public float radius;
-    public float collecterRadius;
+    
 
     [Range(2, 200)]
     public int numEdges;
@@ -16,7 +16,6 @@ public class EdgeInvert : MonoBehaviour
     private void Start()
     {
         Generate();
-        SetCollecter();
     }
 
     private void OnValidate()
@@ -41,17 +40,5 @@ public class EdgeInvert : MonoBehaviour
         points[numEdges] = points[0];
 
         edgeCollider.points = points;
-    }
-
-    private void SetCollecter()
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            float angle = Mathf.PI * 0.5f - i * (Mathf.PI * 2) / 6;
-            Collecter collecter = Instantiate(collecterPrefab, this.transform);
-            collecter.transform.position = transform.position + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * collecterRadius;
-            collecter.transform.Rotate(new Vector3(0, 0, i * -60), Space.Self);
-            collecter.GetComponent<BoxCollider2D>().enabled = false;
-        }
     }
 }
