@@ -597,8 +597,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd2ef57ece054646b762ee0f5065093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedBallPrefab: {fileID: 0}
-  parent: {fileID: 0}
+  selectedBallPrefab: {fileID: 49957981144081656, guid: be189cc97bd6b4d4daccf0854d17a09c, type: 3}
+  parent: {fileID: 1875363229}
   balls: []
   numbers: 
 --- !u!1 &1191117028

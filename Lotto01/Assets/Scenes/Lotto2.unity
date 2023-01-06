@@ -2099,6 +2099,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1234487683957617077, guid: 0500a29e691e744488968e2a2f751f2d, type: 3}
+      propertyPath: BallPrefab
+      value: 
+      objectReference: {fileID: 1460765044044209431, guid: 495be40706a723449b46b92d2b25c3fd, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
