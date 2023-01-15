@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         transform.localPosition = Vector3.up * currentRadius;
-        float rotateValue = rotateSpeed * Time.fixedDeltaTime * startRadius / currentRadius;
+        float rotateValue = rotateSpeed * Time.fixedDeltaTime * 1;
         rotateTransform.Rotate(0, 0, rotateValue);
     }
 
