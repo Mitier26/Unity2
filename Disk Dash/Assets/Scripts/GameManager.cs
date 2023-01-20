@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
         _scoreText.text = score.ToString();
         _scoreAnimator.Play(_scoreClip.name, -1, 0f);
 
-        if(score % 2 == 0)
+        if (score % 2 == 0)
         {
             CurrentColorId++;
         }
@@ -192,14 +192,14 @@ public class GameManager : MonoBehaviour
     private IEnumerator ISpawnObstacle()
     {
         var timeInterval = new WaitForSeconds(obstacleSpawnTime);
-        bool isScore = UnityEngine.Random.Range(0, 3) == 0;
-        var spawnPrefab = isScore ? scorePrefab : obstaclePrefab;
+        bool isScore = UnityEngine.Random.Range(0, 4) == 0;
+        var spawnPrefab = isScore ? obstaclePrefab : scorePrefab;
 
         while (!hasGameEnded)
         {
             Instantiate(spawnPrefab);
             isScore = UnityEngine.Random.Range(0, 3) == 0;
-            spawnPrefab = isScore ? scorePrefab : obstaclePrefab;
+            spawnPrefab = isScore ? obstaclePrefab : scorePrefab;
             yield return timeInterval;
         }
     }
@@ -230,4 +230,5 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
 }

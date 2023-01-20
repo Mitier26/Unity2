@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed, maxOffset, destroyTime, rotateSpeed;
+    [SerializeField] private float moveSpeed, rotateSpeed, maxOffset, destroyTime;
+
+    [SerializeField] private List<Vector3> obstacleSpawnPos;
+
+    private Vector3 moveDirection;
 
     private bool hasGameFinished;
-
-    [SerializeField] private List<Vector3> spawnPos;
 
     private void Start()
     {
         hasGameFinished = false;
 
-        transform.position = spawnPos[UnityEngine.Random.Range(0, spawnPos.Count)];
+        Vector3 spawnPos;
+        int posIndex;
+
+        posIndex = Random.Range(0, this.obstacleSpawnPos.Count);
+        spawnPos = this.obstacleSpawnPos[posIndex];
+        transform.position = spawnPos;
+        moveDirection = -1 * spawnPos.normalized;
     }
 
     private void OnEnable()
@@ -32,13 +40,15 @@ public class Score : MonoBehaviour
     {
         if (hasGameFinished) return;
 
-        transform.position += moveSpeed * Time.fixedDeltaTime * Vector3.up;
+        transform.position += moveSpeed * Time.fixedDeltaTime * moveDirection;
+
         transform.Rotate(rotateSpeed * Time.fixedDeltaTime * Vector3.forward);
-        
-        if (transform.position.x < maxOffset)
+
+        if (transform.position.x > maxOffset || transform.position.x < -maxOffset)
         {
             Destroy(gameObject);
         }
+
     }
 
     public void OnGameEnded()

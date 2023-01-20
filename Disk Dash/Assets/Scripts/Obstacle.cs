@@ -4,32 +4,25 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed, maxOffset, destroyTime;
+    [SerializeField] private float moveSpeed, rotateSpeed, maxOffset, destroyTime;
 
-    [SerializeField] private List<Vector3> spawnPos;
+    [SerializeField] private List<Vector3> obstacleSpawnPos;
 
-    private Vector3 currentspawnPos;
-    private int spawnIndex;
+    private Vector3 moveDirection;
 
     private bool hasGameFinished;
-    private bool isLeft;
-    private bool canSwitch;
 
     private void Start()
     {
         hasGameFinished = false;
 
-        spawnIndex = Random.Range(0, spawnPos.Count);
-        currentspawnPos = spawnPos[spawnIndex];
-        isLeft = Random.Range(0, 2) == 0;
-        currentspawnPos.x *= isLeft ? -1f : 1f;
-        transform.position = currentspawnPos;
-        canSwitch = Random.Range(0, 4) == 0 && spawnIndex != 0;
+         Vector3 spawnPos;
+         int posIndex;
 
-        if(canSwitch)
-        {
-            StartCoroutine(MoveToOppositeDirection());
-        }
+        posIndex = Random.Range(0, this.obstacleSpawnPos.Count);
+        spawnPos = this.obstacleSpawnPos[posIndex];
+        transform.position = spawnPos;
+        moveDirection = -1 * spawnPos.normalized;
     }
 
     private void OnEnable()
@@ -47,9 +40,11 @@ public class Obstacle : MonoBehaviour
     {
         if (hasGameFinished) return;
 
-        transform.position += moveSpeed * Time.fixedDeltaTime * Vector3.down;
+        transform.position += moveSpeed * Time.fixedDeltaTime * moveDirection;
 
-        if(transform.position.y < maxOffset)
+        transform.Rotate(rotateSpeed * Time.fixedDeltaTime * Vector3.forward);
+
+        if (transform.position.x > maxOffset || transform.position.x < -maxOffset)
         {
             Destroy(gameObject);
         }
@@ -79,36 +74,5 @@ public class Obstacle : MonoBehaviour
         }
 
         Destroy(gameObject);
-    }
-
-    [SerializeField] private float startSwitchPosY, endSwitchPosY;
-
-    private IEnumerator MoveToOppositeDirection()
-    {
-        float currentSwitchPosY = startSwitchPosY + (endSwitchPosY - startSwitchPosY) * 0.25f * Random.Range(0, 5);
-
-        float currentPosY = transform.position.y;
-        float offsetY = currentSwitchPosY - currentPosY;
-        float waitTime = offsetY / moveSpeed;
-        yield return new WaitForSeconds(waitTime);
-
-        float currentSwitchPosX = transform.position.x;
-        float targetSwitchPosX = -currentSwitchPosX;
-        float offsetX = targetSwitchPosX - currentSwitchPosX;
-        float timeToSwitch = Mathf.Abs(offsetX / moveSpeed);
-        float speedMagnitude = offsetX > 0f ? 1f : -1f;
-
-        float timeElapsed = 0f;
-        while(timeElapsed < timeToSwitch)
-        {
-            timeElapsed += Time.fixedDeltaTime;
-            transform.position += speedMagnitude * moveSpeed * Time.fixedDeltaTime * Vector3.right;
-            yield return new WaitForFixedUpdate();
-        }
-
-        Vector3 temp = transform.position;
-        temp.x = targetSwitchPosX;
-        transform.position = temp;
-
     }
 }

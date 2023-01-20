@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
     private bool canMove;
     private bool canShoot;
+    private bool isSlow;
 
     [SerializeField] private AudioClip moveClip, pointClip, scoreClip, loseClip;
 
@@ -35,14 +37,18 @@ public class Player : MonoBehaviour
     {
         canShoot = true;
         canMove = true;
+        isSlow = false;
 
-        isSlow = true;
-        speedMagnitude = 1f;
-        speedMultiplier = slowMoveSpeedMultiplier;
-
-        currentRotateValue = 0f;
-        rotateMagnitude = 1f;
-        rotateSpeedMultiplier = slowRotateSpeedMultiplier;
+        totalMovePos = movePositions.Count;
+        moveStartIndex = 0;
+        moveMagnitude = 1;
+        moveEndIndex = (moveStartIndex + 1) % totalMovePos;
+        moveStartPos = movePositions[moveStartIndex];
+        moveEndPos = movePositions[moveEndIndex];
+        moveDirection = (moveEndPos - moveStartPos).normalized;
+        moveDistance = Vector3.Distance(moveEndPos, moveStartPos);
+        currentMoveDistance = 0;
+        transform.position = moveStartPos + currentMoveDistance * moveDirection;
     }
 
     private void Update()
@@ -50,26 +56,18 @@ public class Player : MonoBehaviour
         if(canShoot && Input.GetMouseButtonDown(0))
         {
             isSlow = !isSlow;
+            moveMagnitude = isSlow ? 0.2f : 1f;
             AudioManager.Instance.PlaySound(moveClip);
-            speedMultiplier = isSlow ? slowMoveSpeedMultiplier : faseMoveSpeedMultiplier;
-            rotateSpeedMultiplier = isSlow ? slowRotateSpeedMultiplier : faseMoveSpeedMultiplier;
         }
     }
 
-    [SerializeField] private float startSpeed;
-    [SerializeField] private float boundsX;
-    [SerializeField] private float faseMoveSpeedMultiplier, slowMoveSpeedMultiplier;
+    [SerializeField] private List<Vector3> movePositions;
+    [SerializeField] private float moveSpeed;
 
-    private float speedMagnitude;
-    private float speedMultiplier;
-    private bool isSlow;
-
-    [SerializeField] private float rotateSpeed;
-    [SerializeField] private float fastRotateSpeedMultiplier, slowRotateSpeedMultiplier;
-
-    private float currentRotateValue;
-    private float rotateMagnitude;
-    private float rotateSpeedMultiplier;
+    private Vector3 moveStartPos, moveEndPos, moveDirection;
+    private float moveDistance, moveMagnitude;
+    private float currentMoveDistance;
+    private int moveStartIndex, moveEndIndex, totalMovePos;
 
     private Vector3 direction;
 
@@ -77,40 +75,51 @@ public class Player : MonoBehaviour
     {
         if (!canMove) return;
 
-        transform.position += (speedMagnitude * speedMultiplier * startSpeed * Time.fixedDeltaTime * Vector3.right);
-
-        currentRotateValue += (rotateMagnitude * rotateSpeedMultiplier * rotateSpeed * Time.fixedDeltaTime);
-
-        transform.rotation = Quaternion.Euler(0, 0, currentRotateValue);
-
-        if(transform.position.x < -boundsX || transform.position.x > boundsX)
+        if (currentMoveDistance > moveDistance)
         {
-            speedMagnitude *= -1f;
-
-            AudioManager.Instance.PlaySound(pointClip);
-
-            if(currentRotateValue > 360f || currentRotateValue < 0f)
-            {
-                rotateMagnitude *= -1f;
-            }
+            currentMoveDistance = 0f;
+            moveStartIndex = (moveStartIndex + 1) % totalMovePos;
+            moveEndIndex = (moveStartIndex + 1) % totalMovePos;
+            moveStartPos = movePositions[moveStartIndex];
+            moveEndPos = movePositions[moveEndIndex];
+            moveDirection = (moveEndPos - moveStartPos).normalized;
+            moveDistance = Vector3.Distance(moveEndPos, moveStartPos);
         }
+        else if (currentMoveDistance < 0f)
+        {
+            moveStartIndex = (moveStartIndex - 1 + totalMovePos) % totalMovePos;
+            moveEndIndex = (moveStartIndex + 1) % totalMovePos;
+            moveStartPos = movePositions[moveStartIndex];
+            moveEndPos = movePositions[moveEndIndex];
+            moveDirection = (moveEndPos - moveStartPos).normalized;
+            moveDistance = Vector3.Distance(moveEndPos, moveStartPos);
+            currentMoveDistance = moveDistance;
+        }
+
+
+        currentMoveDistance += moveSpeed * moveMagnitude * Time.fixedDeltaTime;
+        transform.position = moveStartPos + currentMoveDistance * moveDirection;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag(Constants.Tags.SCORE))
+        if(collision.CompareTag(Constants.Tags.MOVE))
         {
-            GameManager.Instance.UpdateScore();
-            AudioManager.Instance.PlaySound(scoreClip);
-            collision.GetComponent<Score>().OnGameEnded();
+            AudioManager.Instance.PlaySound(pointClip);
         }
 
+        if (collision.CompareTag(Constants.Tags.SCORE))
+        {
+            collision.gameObject.GetComponent<Score>().OnGameEnded();
+            GameManager.Instance.UpdateScore();
+            AudioManager.Instance.PlaySound(scoreClip);
+        }
+        
         if (collision.CompareTag(Constants.Tags.OBSTACLE))
         {
             Destroy(Instantiate(explosionPrefab, transform.position, Quaternion.identity), 3f);
             AudioManager.Instance.PlaySound(loseClip);
             GameManager.Instance.EndGame();
-            Destroy(collision.gameObject);
         }
     }
 
@@ -118,7 +127,6 @@ public class Player : MonoBehaviour
 
     public void OnGameEnded()
     {
-        GetComponent<Collider2D>().enabled = false;
         StartCoroutine(Rescale());
     }
 
