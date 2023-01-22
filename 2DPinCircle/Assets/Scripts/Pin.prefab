@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7181135328358897641}
+  - component: {fileID: -6288966327552275801}
   m_Layer: 0
   m_Name: Pin
   m_TagString: Untagged
@@ -31,8 +32,21 @@ Transform:
   - {fileID: 8402386705635700501}
   - {fileID: 967440364071602492}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6288966327552275801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589884159136103263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4505ede1ba47b874b8e73b02277d6801, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  square: {fileID: 1005574026694810451}
 --- !u!1 &1005574026694810451
 GameObject:
   m_ObjectHideFlags: 0
@@ -49,7 +63,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &967440364071602492
 Transform:
   m_ObjectHideFlags: 0
