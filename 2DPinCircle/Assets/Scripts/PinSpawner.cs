@@ -48,6 +48,8 @@ public class PinSpawner : MonoBehaviour
             // 핀이 배치될 때 핀의 수를 감소
             stageController.DecreaseThrowablePin();
 
+            audioSource.Play();
+
         }
     }
 
