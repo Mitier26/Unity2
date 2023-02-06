@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour
     private UIController uiController;
 
     [SerializeField]
-    private GameObject pattern01;
+    //private GameObject pattern01;
+    private PatternController patternController;
 
     private readonly float scoreScale = 20f;
 
@@ -19,7 +20,8 @@ public class GameController : MonoBehaviour
     public void GameStart()
     {
         uiController.GameStart();
-        pattern01.SetActive(true);
+        //pattern01.SetActive(true);
+        patternController.GameStart();
         IsGamePlay = true;
     }
 
@@ -36,7 +38,8 @@ public class GameController : MonoBehaviour
     {
         uiController.GameOver();
 
-        pattern01.SetActive(false);
+        //pattern01.SetActive(false);
+        patternController.GameOver();
 
         IsGamePlay = false;
     }

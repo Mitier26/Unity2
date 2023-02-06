@@ -5,9 +5,11 @@ using UnityEngine;
 public class Pattern01 : MonoBehaviour
 {
     [SerializeField]
-    private GameObject enemyPrefab;
+    private GameObject enemyPrefab; // 적의 프리팹
     [SerializeField]
-    private float spawnCycle;
+    private int maxEnemyCount;      // 적의 생성 숫자
+    [SerializeField]
+    private float spawnCycle;       // 적 생성 주기
 
     private AudioSource audioSource;
 
@@ -33,7 +35,9 @@ public class Pattern01 : MonoBehaviour
         
         yield return new WaitForSeconds(waitTime);
 
-        while (true)
+        int count = 0;
+        //while (true)
+        while(count < maxEnemyCount)
         {
             if(audioSource.isPlaying == false)
             {
@@ -46,6 +50,11 @@ public class Pattern01 : MonoBehaviour
 
             // 패턴 시작 후 소환 시간
             yield return new WaitForSeconds(spawnCycle);
+
+            count++;
         }
+
+        // 패턴 오브젝트 비활성화
+        gameObject.SetActive(false);
     }
 }
