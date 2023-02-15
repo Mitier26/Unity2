@@ -38,7 +38,7 @@ public class Pattern02 : MonoBehaviour
 
         while(index < numbers.Length)
         {
-            StartCoroutine(nameof(SpawnPlayer), index);
+            StartCoroutine(nameof(SpawnPlayer), numbers[index]);
 
             index++;
 

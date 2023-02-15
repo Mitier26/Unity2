@@ -20,7 +20,7 @@ public class MovementRigidbody2D : MonoBehaviour
 
     [SerializeField]
     private int maxJumpCount = 2;
-    private int currentJumpCount;
+    private int currentJumpCount = 2;
 
 
     [Header("Collision")]
@@ -35,6 +35,7 @@ public class MovementRigidbody2D : MonoBehaviour
     private new Collider2D collider2D;
 
     public bool IsLongJump { get; set; } = false;
+    public float MoveSpeed { set => moveSpeed = Mathf.Max(0, value); }
 
     private void Awake()
     {
