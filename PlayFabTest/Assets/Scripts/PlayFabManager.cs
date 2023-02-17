@@ -10,6 +10,7 @@ public class PlayFabManager : MonoBehaviour
     // 이메일로 아이디를 만들고
     // 이메일로 접속하는 방법
     public TMP_InputField emailInput, passwordInput, usernameInput;
+    public TMP_Text logText;
 
     public void LoginButton()
     {
@@ -22,15 +23,16 @@ public class PlayFabManager : MonoBehaviour
         //PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
         // 이메일로 접속
         var request = new LoginWithEmailAddressRequest { Email = emailInput.text, Password = passwordInput.text };
-        PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
+        PlayFabClientAPI.LoginWithEmailAddress(request, (result) => logText.text = "로그인 성공", (error) => logText.text = "로그인 실패");
     }
 
     public void RegisterButton()
     {
         // 회원 가입
-        var request = new RegisterPlayFabUserRequest { Email = emailInput.text, Password = passwordInput.text, Username = usernameInput.text};
-        PlayFabClientAPI.RegisterPlayFabUser(request, OnRegisterSuccess, OnRegisterFailure);
+        var request = new RegisterPlayFabUserRequest { Email = emailInput.text, Password = passwordInput.text, Username = usernameInput.text };
+        PlayFabClientAPI.RegisterPlayFabUser(request, (result) => logText.text = "회원가입 성공", (error) => logText.text = "회원가입 실패");
     }
+
 
     public void LogoutButton()
     {
