@@ -35,8 +35,10 @@ public class FirebaseManager02 : MonoBehaviour
 
     private void Awake()
     {
+        // 베이어 파이스에 변경된 것이 있는지 검사하고 수정한다.
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
         {
+            // 변경된 값 수정이 끝나면 상태을 task에 넣어 뱉어낸다.
             var dependencyStaus = task.Result;
             if(dependencyStaus == DependencyStatus.Available)
             {
@@ -51,10 +53,12 @@ public class FirebaseManager02 : MonoBehaviour
 
     private void Init()
     {
+        // 초기화
         auth = FirebaseAuth.DefaultInstance;
         DBRefernce = FirebaseDatabase.DefaultInstance.RootReference;
     }
 
+    // 텍스트 초기화
     public void  ClearLoginFields()
     {
         emailLoginField.text = "";
@@ -81,7 +85,7 @@ public class FirebaseManager02 : MonoBehaviour
 
     public void LogoutButton()
     {
-        auth.SignOut();
+        auth.SignOut();     // 로그 아웃
         UIManager.instance.LoginScreen();
         ClearLoginFields();
         ClearRegisterField();
