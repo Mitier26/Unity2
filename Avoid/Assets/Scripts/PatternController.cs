@@ -8,6 +8,8 @@ public class PatternController : MonoBehaviour
     private GameController gameController;
     [SerializeField]
     private GameObject[] patterns;                  // 보유하고 있는 패턴
+    [SerializeField]
+    private GameObject hpPotion;
     private GameObject currentPattern;              // 현재 실행중인 패턴
     private int[] patternIndexs;                    // 겹치지 않는 patterns.Length 개수의 숫자
     private int current = 0;                        // PatternIndexs 배열의 순번
@@ -55,6 +57,11 @@ public class PatternController : MonoBehaviour
         currentPattern.SetActive(true);
 
         current++;
+
+        if(current == 4 || current == 7 || current == 10)
+        {
+            hpPotion.SetActive(true);
+        }
 
         // 패턴을 한바퀴 모두 실행했다면 패턴 순서를 겹치지 않는 님의의 숫자로 설정
         if(current >= patterns.Length)

@@ -74,4 +74,14 @@ public class PlayerHP : MonoBehaviour
         // 무적을 종료
         isInvincibility = false;
     }
+
+    public void RecoveryHP()
+    {
+        if(currentHP < imageHP.Length)
+        {
+            soundController.PlaySound(1);
+            imageHP[currentHP].SetActive(true);
+            currentHP++;
+        }
+    }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parrern07 : MonoBehaviour
+public class Pattern07 : MonoBehaviour
 {
     [SerializeField]
     private GameObject ground;

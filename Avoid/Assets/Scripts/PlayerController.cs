@@ -64,5 +64,10 @@ public class PlayerController : MonoBehaviour
                 gameController.GameOver();
             }
         }
+        else if(collision.CompareTag("HPPotion"))
+        {
+            collision.gameObject.SetActive(false);
+            playerHP.RecoveryHP();
+        }
     }
 }
