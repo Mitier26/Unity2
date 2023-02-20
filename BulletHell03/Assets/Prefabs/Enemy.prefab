@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: -7596291028663727469}
   - component: {fileID: -5025958288328129875}
   - component: {fileID: 1836731601321100927}
+  - component: {fileID: -6709067004930787205}
+  - component: {fileID: -887157583408027680}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -130,6 +132,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10c24a648fbd69f4e911cc24be0a0fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  scorePoint: 100
+  explosionPrefab: {fileID: 1079455495437229782, guid: 8ce07ea434782de4ebc275b88ac88a34, type: 3}
+  itemPrefabs:
+  - {fileID: 8235942230843879510, guid: 0b13523f72f5cd646bd95bee4ee968e4, type: 3}
+  - {fileID: 6667945318696347655, guid: 23386453c6aaf0a43a5723fba76a7839, type: 3}
+  - {fileID: 4627851698730850159, guid: 1e63e3119d39ed54b816d1d277d8d70d, type: 3}
 --- !u!114 &1836731601321100927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +152,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageData: {fileID: 11400000, guid: 6b6c801215fd2664f81da13bfe7bfa2f, type: 2}
+--- !u!95 &-6709067004930787205
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036917540954335024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5e333f3aa05428544821eae31c1c571d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &-887157583408027680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036917540954335024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea8ac8ce2f3ad8346825afec4f2abdb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 4
