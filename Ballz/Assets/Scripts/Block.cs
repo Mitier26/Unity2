@@ -19,7 +19,8 @@ public class Block : MonoBehaviour
 
     private void UpdateVisulaState()
     {
-        text.SetText(hitsRemaining.ToString());
+        text.text = hitsRemaining.ToString();
+        //text.SetText(hitsRemaining.ToString());
         int colorIndex = hitsRemaining / 10;
         float mix = (hitsRemaining % 10) / 10;
         spriteRenderer.color = Color.Lerp(colors[colorIndex % colors.Count], colors[(colorIndex +1) % colors.Count], mix);
