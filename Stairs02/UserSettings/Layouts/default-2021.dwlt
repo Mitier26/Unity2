@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -73,7 +73,7 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: 2 by 3
+  m_LastLoadedLayoutName: 
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -97,10 +97,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 400, y: 100}
+  m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 108
+  controlID: 89
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,10 +143,10 @@ MonoBehaviour:
     y: 0
     width: 1010
     height: 947
-  m_MinSize: {x: 100, y: 100}
+  m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 174
+  controlID: 39
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -218,8 +218,8 @@ MonoBehaviour:
     y: 0
     width: 351
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -308,9 +308,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 101a0000
       m_LastClickedID: 0
-      m_ExpandedIDs: 28dbffff34dbffff84dbffffa0dbffffa6dbffffacdbffffcedbffffe0dbffff30dcffff3cdcffffb4e7ffff02e8ffff58f7ffff60640000
+      m_ExpandedIDs: 32fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -430,7 +430,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b8270000
     m_LastClickedID: 10168
-    m_ExpandedIDs: 00000000ea5f000000ca9a3b
+    m_ExpandedIDs: 00000000a05b0000a25b0000a45b0000a65b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -458,18 +458,18 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000ea5f0000ec5f0000126100002a61000000ca9a3b
+    m_ExpandedIDs: ffffffff00000000a05b0000a25b0000a45b0000a65b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Disc
-      m_OriginalName: Disc
+      m_Name: AvatarMove
+      m_OriginalName: AvatarMove
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 24862
+      m_UserData: 7768
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -961,9 +961,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.27967116, y: -0.4607598, z: 0.15566881, w: -0.8277994}
   m_Size:
-    m_Target: 0.8660254
+    m_Target: 4.4140105
     speed: 2
-    m_Value: 0.8660254
+    m_Value: 4.2239337
   m_Ortho:
     m_Target: 0
     speed: 2

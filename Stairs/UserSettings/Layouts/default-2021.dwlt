@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -73,7 +73,7 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-  m_LastLoadedLayoutName: 2 by 3
+  m_LastLoadedLayoutName: 
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 150
+  controlID: 95
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 140
+  controlID: 96
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -218,8 +218,8 @@ MonoBehaviour:
     y: 0
     width: 345
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -308,23 +308,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 04f1ffff
-      m_LastClickedID: -3836
-      m_ExpandedIDs: ec84fdffb688fdff36acffff0ad9ffff48e0ffff02ebffff64f0ffff66f1ffff32fbffff0a720000
+      m_SelectedIDs: 7a0d0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 32fbffffca5a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Score
-        m_OriginalName: Score
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -4340
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -430,7 +430,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: b8270000
     m_LastClickedID: 10168
-    m_ExpandedIDs: 000000000e5a000000ca9a3b
+    m_ExpandedIDs: 00000000ae5b0000b05b0000b25b0000b45b0000b65b0000b85b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -458,21 +458,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 564cfcffffffffff000000000e5a0000165a0000625a0000665a0000885a0000a45a000000ca9a3b
+    m_ExpandedIDs: ffffffff00000000ae5b0000b05b0000b25b0000b45b0000b65b0000b85b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Player
+      m_OriginalName: Player
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 4280
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -573,7 +573,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 0
+    m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -586,7 +586,7 @@ MonoBehaviour:
       y: 21
       width: 1009
       height: 419
-    m_Scale: {x: 0.21822916, y: 0.21822916}
+    m_Scale: {x: 0.22916666, y: 0.22916667}
     m_Translation: {x: 504.5, y: 209.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -594,12 +594,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -2311.79
-      y: -960.00006
-      width: 4623.58
-      height: 1920.0001
+      x: -2201.4546
+      y: -914.1818
+      width: 4402.909
+      height: 1828.3636
     m_MinimalGUI: 1
-  m_defaultScale: 0.21822916
+  m_defaultScale: 0.22916667
   m_LastWindowPixelSize: {x: 1009, y: 440}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -959,7 +959,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.102042355, y: 0.7236494, z: -0.109595746, w: -0.6737398}
     speed: 2
-    m_Value: {x: -0.10204145, y: 0.723643, z: -0.10959478, w: -0.67373383}
+    m_Value: {x: -0.102042355, y: 0.72364944, z: -0.109595746, w: -0.6737398}
   m_Size:
     m_Target: 0.7549837
     speed: 2
