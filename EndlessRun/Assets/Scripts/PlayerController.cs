@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerController : MonoBehaviour
     private int desiredLane = 1;
     public float laneDistance = 4;
 
+    public float jumpForce;
+    public float gravity = -20f;
+
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -20,6 +24,20 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         direction.z = forwardSpeed;
+
+       
+        if(controller.isGrounded)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Jump();
+            }
+        }
+        else
+        {
+            direction.y += gravity * Time.deltaTime;
+        }
+        
 
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -51,11 +69,33 @@ public class PlayerController : MonoBehaviour
         }
 
         //transform.position = targetPosition;
-        transform.position = Vector3.Lerp(transform.position, targetPosition, 80 * Time.fixedDeltaTime);
+        //transform.position = Vector3.Lerp(transform.position, targetPosition, 80 * Time.fixedDeltaTime);
+        //controller.center = controller.center;
+
+        if (transform.position == targetPosition) return;
+        Vector3 diff = targetPosition - transform.position;
+        Vector3 moveDir = diff.normalized * 25 * Time.deltaTime;
+        if (moveDir.sqrMagnitude < diff.sqrMagnitude)
+            controller.Move(moveDir);
+        else
+            controller.Move(diff);
     }
 
     private void FixedUpdate()
     {
         controller.Move(direction * Time.fixedDeltaTime);
+    }
+
+    private void Jump()
+    {
+        direction.y = jumpForce;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.transform.CompareTag("Obstacle"))
+        {
+            PlayerManager.gameover = true;
+        }
     }
 }
