@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RotateObject : MonoBehaviour
 {
-    public float rotateSpeed = 1;
+    public int rotateSpeed = 300;
     private void Update()
     {
-        transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime, Space.World );
+        transform.Rotate(0, rotateSpeed * Time.deltaTime ,0, Space.World );
     }
 }
