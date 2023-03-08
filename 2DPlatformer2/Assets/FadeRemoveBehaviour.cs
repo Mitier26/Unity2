@@ -29,7 +29,7 @@ public class FadeRemoveBehaviour : StateMachineBehaviour
 
         spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, newAlpha);
 
-        if(timeElapsed > fadeTime)
+        if (timeElapsed > fadeTime)
         {
             Destroy(objToRemove);
         }

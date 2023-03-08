@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
 {
+    public UnityEvent<int, Vector2> damageableHit;
+
     Animator animator;
 
     [SerializeField]
@@ -32,7 +35,7 @@ public class Damageable : MonoBehaviour
         {
             _health = value;
 
-            if(_health < 0)
+            if (_health <= 0)
             {
                 IsAlive = false;
             }
@@ -43,6 +46,7 @@ public class Damageable : MonoBehaviour
     private bool _isAlive = true;
     [SerializeField]
     private bool isInvincible = false;
+
 
     private float timeSinceHit = 0;
     public float invincibilityTimer = 0.25f;
@@ -62,17 +66,29 @@ public class Damageable : MonoBehaviour
 
     }
 
+    public bool LockVelocity
+    {
+        get
+        {
+            return animator.GetBool(AnimationStrings.lockVelocity);
+        }
+        set
+        {
+            animator.SetBool(AnimationStrings.lockVelocity, value);
+        }
+    }
+
     private void Awake()
     {
-            animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if(isInvincible)
+        if (isInvincible)
         {
-            if(timeSinceHit > invincibilityTimer)
-                    {
+            if (timeSinceHit > invincibilityTimer)
+            {
                 isInvincible = false;
                 timeSinceHit = 0;
             }
@@ -81,12 +97,20 @@ public class Damageable : MonoBehaviour
         }
 
     }
-    public void Hit(int damage)
+    public bool Hit(int damage, Vector2 knockback)
     {
-        if(IsAlive && !isInvincible)
+        if (IsAlive && !isInvincible)
         {
             Health -= damage;
             isInvincible = true;
+
+            animator.SetTrigger(AnimationStrings.hitTrigger);
+            LockVelocity = true;
+            damageableHit?.Invoke(damage, knockback);
+            CharacterEvents.characterDamaged.Invoke(gameObject, damage);
+
+            return true;
         }
+        return false;
     }
 }
