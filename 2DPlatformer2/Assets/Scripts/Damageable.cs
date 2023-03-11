@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class Damageable : MonoBehaviour
 {
     public UnityEvent<int, Vector2> damageableHit;
+    public UnityEvent damageableDeath;
+    public UnityEvent<int, int> healthChanged;
 
     Animator animator;
 
@@ -35,6 +37,8 @@ public class Damageable : MonoBehaviour
         {
             _health = value;
 
+            healthChanged?.Invoke(_health, MaxHealth);
+
             if (_health <= 0)
             {
                 IsAlive = false;
@@ -62,6 +66,11 @@ public class Damageable : MonoBehaviour
             _isAlive = value;
             animator.SetBool(AnimationStrings.isAlive, value);
             Debug.Log("IsAlive set" + value);
+
+            if(value == false)
+            {
+                damageableDeath.Invoke();
+            }
         }
 
     }
