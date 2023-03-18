@@ -53,6 +53,11 @@ public class Weapon : MonoBehaviour
                 break;
         }
 
+        // 손 세팅
+        Hand hand = player.hands[(int)data.itemType];
+        hand.spriter.sprite = data.hand;
+        hand.gameObject.SetActive(true);
+
         // 플레이어 자식에 있는 모든 오브젝트중에
         // ApplyGear 메서드가 있는 모든 것을 실행한다.
         player.BroadcastMessage("ApplyGear", SendMessageOptions.DontRequireReceiver);
