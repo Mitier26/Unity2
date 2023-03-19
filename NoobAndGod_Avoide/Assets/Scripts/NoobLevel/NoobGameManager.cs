@@ -38,9 +38,9 @@ public class NoobGameManager : MonoBehaviour
         noobObstacles[activeCount].gameObject.SetActive(true);
         ChangeBackgroundColor();
 
-        if(!PlayerPrefs.HasKey("HighScore"))
+        if(!PlayerPrefs.HasKey("NoobHighScore"))
         {
-            PlayerPrefs.SetInt("HighScore", 0);
+            PlayerPrefs.SetInt("NoobHighScore", 0);
         }
     }
 
