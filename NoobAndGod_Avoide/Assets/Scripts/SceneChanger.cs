@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    private enum State { Title, Stage };
+    private enum State { Title, Stage, NoobLevel, AmateurLevel };
     [SerializeReference] private State state;
     public void ChangeScene(SceneChanger currState)
     {
