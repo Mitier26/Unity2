@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle
+  m_Name: Beginner_walk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 54fa4b1991f760342b6a78cd6e183ac1, type: 3}
+      value: {fileID: 21300000, guid: feb835ce8d702da4ab421b070d1761c7, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: f38f48febd745b342a196bc00a799ec0, type: 3}
+      value: {fileID: 21300000, guid: ad40eb87c5f2fee438543cd5b7eba5e4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 54fa4b1991f760342b6a78cd6e183ac1, type: 3}
-    - {fileID: 21300000, guid: f38f48febd745b342a196bc00a799ec0, type: 3}
+    - {fileID: 21300000, guid: feb835ce8d702da4ab421b070d1761c7, type: 3}
+    - {fileID: 21300000, guid: ad40eb87c5f2fee438543cd5b7eba5e4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

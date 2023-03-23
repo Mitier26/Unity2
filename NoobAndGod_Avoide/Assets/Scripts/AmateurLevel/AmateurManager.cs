@@ -11,13 +11,13 @@ public class AmateurManager : MonoBehaviour
     public bool isPlay = false;                         // 게임이 시작 되었는지 확인
 
     [SerializeField]
-    private GameObject one, two, three, go;             // 카운트 다운 오브젝트
+    private UnityEngine.GameObject one, two, three, go;             // 카운트 다운 오브젝트
 
     [SerializeField]
     private AmateurSpawner spawner;                         // 소환기에 명령을 전달하기 위해 
     
     [SerializeField]
-    private GameObject gameOverPanel;                   // 게임 오버 오브젝트
+    private UnityEngine.GameObject gameOverPanel;                   // 게임 오버 오브젝트
 
     [SerializeField]
     private TextMeshProUGUI scoreText;                  // 게임 내에 표시되는 점수

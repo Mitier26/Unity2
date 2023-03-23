@@ -16,7 +16,7 @@ public class NoobGameManager : MonoBehaviour
     private NoobObstacle[] noobObstacles;
 
     [SerializeField]
-    private GameObject gameoverPanel;
+    private UnityEngine.GameObject gameoverPanel;
 
     [SerializeField]
     private Color[] colors;

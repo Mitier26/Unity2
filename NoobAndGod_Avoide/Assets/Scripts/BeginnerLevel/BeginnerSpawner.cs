@@ -5,8 +5,8 @@ using UnityEngine;
 public class BeginnerSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject coinPrefab, obstaclePrefab;  // 소환할 오브젝트들
-    private GameObject obj;                         // 생성한 오브젝트를 저장할 변수
+    private UnityEngine.GameObject coinPrefab, obstaclePrefab;  // 소환할 오브젝트들
+    private UnityEngine.GameObject obj;                         // 생성한 오브젝트를 저장할 변수
 
     private int percent;                            // 코인을 생성할지, 장애물을 생성할지 정하는 변수
     private float spawnTime;                        // 시간에 따라 지속적을 증가하는 변수
@@ -41,7 +41,7 @@ public class BeginnerSpawner : MonoBehaviour
                 obj = obstaclePrefab;
             }
 
-            GameObject spawnedObject = Instantiate(obj, transform.position, Quaternion.identity);
+            UnityEngine.GameObject spawnedObject = Instantiate(obj, transform.position, Quaternion.identity);
             spawnedObject.GetComponent<BeginnerObject>().moveSpeed = objectSpeed;
             spawnInterval = Random.Range(baseSpawnTime * spawnWeight, spawnWeight);
         }

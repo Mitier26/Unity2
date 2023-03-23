@@ -14,7 +14,7 @@ public class AmateurSpawner : MonoBehaviour
     
     // 소환될 오브젝트
     [SerializeField]
-    private GameObject[] objectPrefabs;
+    private UnityEngine.GameObject[] objectPrefabs;
 
     // 소환된 오브젝트들을 담을 부모
     [SerializeField]
@@ -52,7 +52,7 @@ public class AmateurSpawner : MonoBehaviour
         {
             for (int j = 0; j < 10; j++)
             {
-                GameObject obj = Instantiate(objectPrefabs[i], transforms[i]);
+                UnityEngine.GameObject obj = Instantiate(objectPrefabs[i], transforms[i]);
                 obj.SetActive(false);
             }
         }
@@ -60,7 +60,7 @@ public class AmateurSpawner : MonoBehaviour
 
     private IEnumerator SpawnFish()
     {
-        GameObject selected;
+        UnityEngine.GameObject selected;
         // 레벨에 따라 작동 되는 것 만들어야 한다.
         while (AmateurManager.instance.isPlay)
         {
@@ -78,7 +78,7 @@ public class AmateurSpawner : MonoBehaviour
         // 나중에 isLive로 변경한다.
         while(AmateurManager.instance.isPlay)
         {
-            GameObject spawnObj;
+            UnityEngine.GameObject spawnObj;
 
             // 소환할 것 선택
             float selectNum = Random.Range(0, 100);
@@ -97,7 +97,7 @@ public class AmateurSpawner : MonoBehaviour
 
             if( selectNum < 30)
             {
-                Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+                Transform player = UnityEngine.GameObject.FindGameObjectWithTag("Player").transform;
                 if(player.position.x < 0 )
                 {
                     spawnPosition = new Vector3(player.position.x + Random.Range(0,1f), transform.position.y, transform.position.z);
@@ -120,9 +120,9 @@ public class AmateurSpawner : MonoBehaviour
     }
     
 
-    private GameObject GetObject(int index)
+    private UnityEngine.GameObject GetObject(int index)
     {
-        GameObject selected = null;
+        UnityEngine.GameObject selected = null;
 
         for (int i = 0; i < transforms[index].childCount; i++)
         {

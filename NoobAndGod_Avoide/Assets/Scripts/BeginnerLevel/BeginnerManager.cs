@@ -14,7 +14,7 @@ public class BeginnerManager : MonoBehaviour
     [SerializeField]
     Transform spawners;
     [SerializeField]
-    private GameObject gameoverPanel;
+    private UnityEngine.GameObject gameoverPanel;
     [SerializeField]
     private TextMeshProUGUI scoreText;
     [SerializeField]
