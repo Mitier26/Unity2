@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 
-public class ProFish : MonoBehaviour
+public class ProFish : ProObject
 {
-    private IObjectPool<GameObject> managedPool;
-
     [SerializeField]
     GameObject indicator, water, fish;      // 작동할 오브젝트
 
@@ -31,11 +28,6 @@ public class ProFish : MonoBehaviour
         waterStartPos = water.transform.position.y;
         fishStartPos = fish.transform.position.y;
         StartCoroutine(Fish());
-    }
-
-    public void SetManager(IObjectPool<GameObject> pool)
-    {
-        managedPool = pool;
     }
 
     private IEnumerator Fish()
@@ -88,8 +80,4 @@ public class ProFish : MonoBehaviour
         }
     }
 
-    public void DestroyObject()
-    {
-        managedPool.Release(gameObject);
-    }
 }

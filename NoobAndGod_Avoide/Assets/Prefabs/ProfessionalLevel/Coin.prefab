@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 5670939182381199059}
   - component: {fileID: 5670939182381199056}
   - component: {fileID: 5670939182381199057}
-  - component: {fileID: -4035124941484069873}
+  - component: {fileID: 4681889308414058814}
   m_Layer: 7
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,7 +146,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &-4035124941484069873
+--- !u!114 &4681889308414058814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,8 +155,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5670939182381199062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8421e81d18f604ca4cc5e5642644f2, type: 3}
+  m_Script: {fileID: 11500000, guid: bee86da198bc6fa4c9cf99587ae60f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCoin: 0
   coinLifeTime: 8

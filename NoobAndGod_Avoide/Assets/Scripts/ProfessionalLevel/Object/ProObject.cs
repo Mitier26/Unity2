@@ -5,21 +5,10 @@ using UnityEngine.Pool;
 
 public class ProObject : MonoBehaviour
 {
-    private IObjectPool<GameObject> managedPool;
+    private IObjectPool<ProObject> managedPool;
 
-    public bool isCoin;
-    [SerializeField]
-    private float coinLifeTime = 8f;
-
-    private void OnEnable()
-    {
-        if(isCoin)
-        {
-            Invoke("DestroyObject", coinLifeTime);
-        }
-    }
-
-    public void SetManager(IObjectPool<GameObject> pool)
+    
+    public void SetManager(IObjectPool<ProObject> pool)
     {
         managedPool = pool;
     }
@@ -35,8 +24,9 @@ public class ProObject : MonoBehaviour
 
     }
 
+
     public void DestroyObject()
     {
-        managedPool.Release(gameObject);
+        managedPool.Release(this);
     }
 }
