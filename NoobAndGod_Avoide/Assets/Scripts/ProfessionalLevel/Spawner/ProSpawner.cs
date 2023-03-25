@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
+using UnityEngine.Pool;     // 유니티에서 제공하는 오브젝트 풀
 
 public abstract class ProSpawner : MonoBehaviour
 {
@@ -21,7 +20,7 @@ public abstract class ProSpawner : MonoBehaviour
 
     private void Awake()
     {
-        pool = new ObjectPool<ProObject>(CreateObject, GetObject, ReleaseObject, DestroyObject, maxSize: 5);
+        pool = new ObjectPool<ProObject>(CreateObject, GetObject, ReleaseObject, DestroyObject, maxSize: 20);
     }
 
     private void Update()
@@ -43,10 +42,11 @@ public abstract class ProSpawner : MonoBehaviour
 
     private ProObject CreateObject()
     {
+        // 오브젝트를 생성하고 부모를 지정하낟.
         ProObject obj = Instantiate(spawnPrefab, transform);
-
+        // 오브젝트를 끈다.
         obj.gameObject.SetActive(false);
-
+        // 오브젝트에게 어디에 소속되어 있는 풀인지 알린다.
         obj.GetComponent<ProObject>().SetManager(pool);
 
         return obj;

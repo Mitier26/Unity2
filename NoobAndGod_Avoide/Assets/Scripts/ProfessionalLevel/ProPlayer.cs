@@ -73,4 +73,11 @@ public class ProPlayer : MonoBehaviour
 
         transform.Translate(moveDirection * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Obstacle"))
+        {
+        }
+    }
 }
