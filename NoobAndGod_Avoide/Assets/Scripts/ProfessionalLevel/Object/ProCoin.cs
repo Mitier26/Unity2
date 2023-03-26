@@ -7,9 +7,16 @@ public class ProCoin : ProBox
     [SerializeField]
     private float coinLifeTime = 8f;
 
-    private IEnumerator Start()
+
+    private void OnEnable()
+    {
+        StartCoroutine(DestoryCoin());
+    }
+
+    private IEnumerator DestoryCoin()
     {
         yield return new WaitForSeconds(coinLifeTime);
         base.DestroyObject();
+        yield break;
     }
 }

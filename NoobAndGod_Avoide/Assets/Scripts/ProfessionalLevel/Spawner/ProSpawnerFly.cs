@@ -17,7 +17,7 @@ public class ProSpawnerFly : ProSpawner
             obj.GetComponent<ProFly>().startPositionX = transform.position.x;
             obj.GetComponent<ProFly>().SetFly();
 
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(Random.Range(spawnDelay, spawnDelay * 2));
         }
     }
 }

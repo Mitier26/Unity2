@@ -15,7 +15,7 @@ public class ProSpawnerBall : ProSpawner
             obj.GetComponent<ProBall>().direction = spawnDirection * spawnPower;
             obj.GetComponent<ProBall>().startPositionX = transform.position.x;
 
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(Random.Range(spawnDelay, spawnDelay * 2));
         }
     }
 }

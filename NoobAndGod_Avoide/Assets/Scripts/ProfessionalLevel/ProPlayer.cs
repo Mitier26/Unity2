@@ -29,6 +29,8 @@ public class ProPlayer : MonoBehaviour
     }
     private void Update()
     {
+        if (!ProManager.instance.isString) return;
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
         HorizontalMovement();

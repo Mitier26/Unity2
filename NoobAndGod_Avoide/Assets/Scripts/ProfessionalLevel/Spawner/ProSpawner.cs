@@ -10,9 +10,9 @@ public abstract class ProSpawner : MonoBehaviour
     [SerializeField]
     protected Vector2 spawnDirection;             // 소환할 방향, 생성한 오브젝트에 영향을 준다.
     [SerializeField]
-    protected float spawnPower;                   // 소환할 때의 파워, 생성한 것의 이동 속도에 영향
+    public float spawnPower;                   // 소환할 때의 파워, 생성한 것의 이동 속도에 영향
     [SerializeField]
-    protected float spawnDelay;                   // 소환 간격
+    public float spawnDelay;                   // 소환 간격
     [SerializeField]
     protected Transform[] spawnRanges;            // 소환할 범위, 랜덤으로 생성될 때, 생성 범위, 자신을 기준으로 한다.
 
@@ -23,14 +23,11 @@ public abstract class ProSpawner : MonoBehaviour
         pool = new ObjectPool<ProObject>(CreateObject, GetObject, ReleaseObject, DestroyObject, maxSize: 20);
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        // 테스트용
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartSpawning();
-        }
+       StartSpawning();
     }
+
 
     public void StartSpawning()
     {

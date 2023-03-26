@@ -13,7 +13,7 @@ public class ProSpawnerBox : ProSpawner
 
             obj.GetComponent<Rigidbody2D>().velocity = spawnDirection * spawnPower;
 
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(Random.Range( spawnDelay, spawnDelay * 2));
         }
     }
 }

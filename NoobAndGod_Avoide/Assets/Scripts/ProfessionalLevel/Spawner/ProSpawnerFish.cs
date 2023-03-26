@@ -12,7 +12,7 @@ public class ProSpawnerFish : ProSpawner
 
             obj.transform.position = transform.position + new Vector3(Random.Range(spawnRanges[0].localPosition.x, spawnRanges[1].localPosition.x), 0, 0);
 
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(Random.Range(spawnDelay, spawnDelay * 2));
         }
     }
 }

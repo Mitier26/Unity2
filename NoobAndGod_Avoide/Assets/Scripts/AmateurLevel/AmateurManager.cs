@@ -35,9 +35,11 @@ public class AmateurManager : MonoBehaviour
     private int levelupPoint = 21;                      // 레벨업에 필요한 점수
     public float spawnObjectInterval = 4f;              // 오브젝트 소환 간격
     public float spawnFishInterval = 5f;                // 물고기 소환 간격
+    private float spawnObjectStart = 4f;
+    private float spawnFishStart = 5f;
     public float spawnGravity = 0.1f;                   // 오브젝트의 중력
 
-    private int level;                                  // 게임의 전체 레벨
+    private int level = 1;                                  // 게임의 전체 레벨
     public int Level
     {
         get { return level; }
@@ -45,8 +47,8 @@ public class AmateurManager : MonoBehaviour
         {
             // 레벨업 할 때 마다 작동
             level = value;
-            spawnObjectInterval = Mathf.Max(0.1f, spawnObjectInterval - level * 0.3f);
-            spawnFishInterval = Mathf.Max(0.1f, spawnFishInterval - level * 0.2f);
+            spawnObjectInterval = Mathf.Max(0.1f, spawnObjectStart - level * 0.3f);
+            spawnFishInterval = Mathf.Max(0.1f, spawnFishStart - level * 0.2f);
             spawnGravity += level * 0.1f;
 
             if(level > 1 && !spawner.isFishing)
@@ -66,10 +68,9 @@ public class AmateurManager : MonoBehaviour
         {
             // 값이 변하면 UI도 변경
             score = value;
-            if(score >= levelupPoint)
+            if(score >= levelupPoint * level)
             {
                 Level++;
-                levelupPoint += score - (score - levelupPoint);
             }
             scoreText.text = score.ToString();
         }

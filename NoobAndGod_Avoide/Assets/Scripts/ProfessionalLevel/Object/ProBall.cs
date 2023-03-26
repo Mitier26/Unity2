@@ -5,10 +5,10 @@ using UnityEngine;
 public class ProBall : ProObject
 {
     [SerializeField]
-    private GameObject indicator, ball;
+    private GameObject indicator, ball;     // 관리할 오브젝트
 
-    public float startPositionX;
-    public Vector2 direction;
+    public float startPositionX;            // 공이 생성외는 위치
+    public Vector2 direction;               // 공의 이동 방향
 
     private void Start()
     {
@@ -35,6 +35,7 @@ public class ProBall : ProObject
 
     private void LateUpdate()
     {
+        // 볼이 경계 밖으로 나가면 풀로 반환
         if(ball.transform.localPosition.x > ProConstants.max.x || ball.transform.localPosition.x < ProConstants.min.x)
         {
             DestroyObject();
