@@ -32,11 +32,13 @@ public class Player : MonoBehaviour
 
     void OnMove(InputValue value)
     {
+        if (!GameManager.Instance.isLive) return;
         inputVec = value.Get<Vector2>();
     }
 
     private void FixedUpdate()
     {
+        if (!GameManager.Instance.isLive) return;
         // 물리 이동 방법
 
         // 1. 힘을 가하는 방법
@@ -57,6 +59,8 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!GameManager.Instance.isLive) return;
+
         animator.SetFloat("Speed", inputVec.magnitude);
         if(inputVec.x !=0) spriteRenderer.flipX = inputVec.x < 0;
     }

@@ -11,6 +11,7 @@ public class ItemData : ScriptableObject
     public ItemType itemType;       // 아이템의 타입
     public int itemId;              // 아이템 id
     public string itemName;         // 아이템의 이름
+    [TextArea]
     public string itemDesc;         // 아이템의 설명
     public Sprite itemIcon;         // 아이템의 아이콘 ( 그림 )
 

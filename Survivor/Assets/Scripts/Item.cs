@@ -15,6 +15,8 @@ public class Item : MonoBehaviour
 
     Image icon;                     // 아이템의 그림
     Text textLevel;                 // 아이템의 레벨
+    Text textName;
+    Text textDesc;
 
     private void Awake()
     {
@@ -24,14 +26,32 @@ public class Item : MonoBehaviour
 
         Text[] texts = GetComponentsInChildren<Text>();
         textLevel = texts[0];
-        // Text 의 경우 1개만 있기 때문에 0으로 해도 된다.
+        textName = texts[1];
+        textDesc = texts[2];
+        textName.text = data.itemName; ;
     }
 
-    private void LateUpdate()
+    private void OnEnable()
     {
         textLevel.text = "Lv." + (level + 1);
-        // 화면에 표시되는 글자
+
+        switch(data.itemType)
+        {
+            case ItemData.ItemType.Melee:
+            case ItemData.ItemType.Range:
+                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100 , data.counts[level]);
+                break;
+            case ItemData.ItemType.Glove:
+            case ItemData.ItemType.Shoe:
+                textDesc.text = string.Format(data.itemDesc, data.damages[level] * 100);
+                break;
+            default:
+                textDesc.text = string.Format(data.itemDesc);
+                break;
+        }
     }
+        
+
 
     public void OnClick()
     {
