@@ -19,4 +19,12 @@ public class ProCoin : ProBox
         base.DestroyObject();
         yield break;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            ProAudioManager.instance.PlaySound(ProAudioManager.PROSFX.Coin, transform.position);
+        }
+    }
 }

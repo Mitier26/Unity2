@@ -13,6 +13,8 @@ public class ProSpawnerBox : ProSpawner
 
             obj.GetComponent<Rigidbody2D>().velocity = spawnDirection * spawnPower;
 
+            ProAudioManager.instance.PlaySound(ProAudioManager.PROSFX.Box, obj.transform.position);
+
             yield return new WaitForSeconds(Random.Range( spawnDelay, spawnDelay * 2));
         }
     }

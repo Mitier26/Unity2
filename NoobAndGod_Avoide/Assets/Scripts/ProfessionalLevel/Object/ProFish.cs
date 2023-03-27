@@ -27,6 +27,7 @@ public class ProFish : ProObject
         percent = 0;
         waterStartPos = water.transform.position.y;
         fishStartPos = fish.transform.position.y;
+        fish.GetComponent<SpriteRenderer>().enabled = true;
         StartCoroutine(Fish());
     }
 

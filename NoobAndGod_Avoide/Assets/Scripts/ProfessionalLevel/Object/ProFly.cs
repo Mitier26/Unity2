@@ -48,6 +48,8 @@ public class ProFly : ProObject
             yield return null;
         }
 
+        ProAudioManager.instance.PlaySound(ProAudioManager.PROSFX.Fly, transform.position);
+
         lineRenderer.enabled = false;
         direction = (player.transform.position - transform.position).normalized;
         rb.velocity = direction * (attackSpeed * 2f);

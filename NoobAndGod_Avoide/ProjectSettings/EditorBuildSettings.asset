@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NoobLevel.unity
     guid: 8eca90bc226d73842bae27c7ec5b0fce
+  - enabled: 1
+    path: Assets/Scenes/AmateurLevel.unity
+    guid: 85e63a906ea5a1f468a9025b642047bc
+  - enabled: 1
+    path: Assets/Scenes/ProfessionalLevel.unity
+    guid: 93dd39fdf4631054db7d642098f7c039
   m_configObjects: {}

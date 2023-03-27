@@ -72,6 +72,7 @@ public class ProManager : MonoBehaviour
         if (!PlayerPrefs.HasKey(PRO_SAVE_TEXT)) PlayerPrefs.SetInt(PRO_SAVE_TEXT, 0);
         Score = 0;
         isString = false;
+        Time.timeScale = 1f;
         Camera.main.orthographicSize = 1f;
     }
 
@@ -149,6 +150,7 @@ public class ProManager : MonoBehaviour
     public void Gameover()
     {
         isString = false;
+        Time.timeScale = 0f;
         resultPanel.SetActive(true);
         if(Score > HighScore) HighScore = Score;
     }

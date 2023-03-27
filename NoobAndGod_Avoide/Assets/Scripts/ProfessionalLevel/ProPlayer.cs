@@ -80,6 +80,31 @@ public class ProPlayer : MonoBehaviour
     {
         if(collision.CompareTag("Obstacle"))
         {
+            collision.GetComponent<ProObject>().DestroyObject();
+        }
+        if (collision.CompareTag("Fish"))
+        {
+            collision.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        if (collision.CompareTag("Ball"))
+        {
+            collision.gameObject.transform.parent.GetComponent<ProObject>().DestroyObject();
+        }
+
+        if(!collision.CompareTag("Water") && !collision.CompareTag("Detector"))
+        {
+            ProAudioManager.instance.PlaySound(ProAudioManager.PROSFX.Death, transform.position);
+            ProManager.instance.Gameover();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Coin")
+        {
+            collision.gameObject.GetComponent<ProObject>().DestroyObject();
+
+            ProAudioManager.instance.PlaySound(ProAudioManager.PROSFX.Get, transform.position);
         }
     }
 }

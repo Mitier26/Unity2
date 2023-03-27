@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Coin
   - Obstacle
+  - Fish
+  - Ball
+  - Water
+  - Detector
   layers:
   - Default
   - TransparentFX
@@ -15,7 +19,7 @@ TagManager:
   - UI
   - Ground
   - Coin
-  - 
+  - Player
   - 
   - 
   - 

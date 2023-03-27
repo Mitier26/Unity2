@@ -11,9 +11,10 @@ public class ProSpawnerBall : ProSpawner
             ProObject obj = pool.Get();
 
             obj.transform.position = new Vector3(0, Random.Range(spawnRanges[0].localPosition.y, spawnRanges[1].localPosition.y) , 0);
-
             obj.GetComponent<ProBall>().direction = spawnDirection * spawnPower;
             obj.GetComponent<ProBall>().startPositionX = transform.position.x;
+
+            ProAudioManager.instance.PlaySound(ProAudioManager.PROSFX.Ball, obj.transform.position);
 
             yield return new WaitForSeconds(Random.Range(spawnDelay, spawnDelay * 2));
         }

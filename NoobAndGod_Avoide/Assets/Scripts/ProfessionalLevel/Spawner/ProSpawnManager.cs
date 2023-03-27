@@ -51,7 +51,7 @@ public class ProSpawnManager : MonoBehaviour
 
         if(level > 8)
         {
-            boxSpawner.spawnDelay = Mathf.Max(0.1f, (float)(ballDelay - (0.2 * (level -8))));
+            boxSpawner.spawnDelay = Mathf.Max(0.1f, (float)(ballDelay - (0.3 * (level -8))));
             fishSpawner.spawnDelay = Mathf.Max(0.5f, (float)(ballDelay - (0.2 * (level - 8)))); ;
             coinSpawner1.spawnDelay = Mathf.Max(0.5f, (float)(ballDelay - (0.2 * (level - 8)))); ;
             coinSpawner2.spawnDelay = Mathf.Max(0.5f, (float)(ballDelay - (0.2 * (level - 8)))); ;
