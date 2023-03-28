@@ -17,7 +17,7 @@ public class ProWater : MonoBehaviour
     {
 
         ProAudioManager.instance.PlaySound(ProAudioManager.PROSFX.Water, collision.transform.position);
-
+        ProParticleManager.instance.PlayParticle(ProParticleManager.PARTICLE.Water, collision.transform.position);
         if(collision.CompareTag("Player"))
         {
             tile.color = new Color(1, 1, 1, 0.5f);

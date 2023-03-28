@@ -25,6 +25,7 @@ public class ProCoin : ProBox
         if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             ProAudioManager.instance.PlaySound(ProAudioManager.PROSFX.Coin, transform.position);
+            ProParticleManager.instance.PlayParticle(ProParticleManager.PARTICLE.Coin, collision.contacts[0].point);
         }
     }
 }

@@ -105,6 +105,7 @@ public class ProPlayer : MonoBehaviour
             collision.gameObject.GetComponent<ProObject>().DestroyObject();
 
             ProAudioManager.instance.PlaySound(ProAudioManager.PROSFX.Get, transform.position);
+            ProParticleManager.instance.PlayParticle(ProParticleManager.PARTICLE.Get, collision.contacts[0].point);
         }
     }
 }
