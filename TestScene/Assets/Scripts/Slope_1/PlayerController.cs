@@ -62,26 +62,26 @@ public class PlayerController : MonoBehaviour
         }
 
         // 입력된 것이 있다면
-        if(inputX != 0)
-        {
-            // 경사, 바닥, 점프아님, 각도 좋음
-            if (isSlope && isGround && !isJump && angle < maxangle)
-            {
-                rig.velocity = Vector2.zero;
+        //if(inputX != 0)
+        //{
+        //    // 경사, 바닥, 점프아님, 각도 좋음
+        //    if (isSlope && isGround && !isJump && angle < maxangle)
+        //    {
+        //        rig.velocity = Vector2.zero;
 
-                // 경사면에 있을 때 경사면의 방향으로 힘들주어 경사로를 이동하는 것 처럼 보이게 한다.
-                if(inputX > 0)
-                    transform.Translate(new Vector2(perp.x * moveSpeed * -inputX * Time.deltaTime, perp.y * moveSpeed * -inputX * Time.deltaTime));
-                else if(inputX < 0)
-                    transform.Translate(new Vector2(perp.x * moveSpeed * inputX * Time.deltaTime, perp.y * moveSpeed * -inputX * Time.deltaTime));
+        //        // 경사면에 있을 때 경사면의 방향으로 힘들주어 경사로를 이동하는 것 처럼 보이게 한다.
+        //        if(inputX > 0)
+        //            transform.Translate(new Vector2(perp.x * moveSpeed * -inputX * Time.deltaTime, perp.y * moveSpeed * -inputX * Time.deltaTime));
+        //        else if(inputX < 0)
+        //            transform.Translate(new Vector2(perp.x * moveSpeed * inputX * Time.deltaTime, perp.y * moveSpeed * -inputX * Time.deltaTime));
 
-            }
-            // 평지에 있을 때
-            else if (!isSlope && isGround && !isJump)
-                transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Mathf.Abs(inputX));
-            else if (!isGround)
-                transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Mathf.Abs(inputX));
-        }
+        //    }
+        //    // 평지에 있을 때
+        //    else if (!isSlope && isGround && !isJump)
+        //        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Mathf.Abs(inputX));
+        //    else if (!isGround)
+        //        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Mathf.Abs(inputX));
+        //}
 
         //transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * Mathf.Abs(inputX));
     }
@@ -89,12 +89,12 @@ public class PlayerController : MonoBehaviour
     public float maxangle;
     private void FixedUpdate()
     {
-        //if (isSlope && isGround & !isJump)
-        //    rig.velocity = perp * moveSpeed * inputX * -1f;
-        //else if (!isSlope && isGround && !isJump)
-        //    rig.velocity = new Vector2(inputX * moveSpeed, 0);
-        //else if (!isGround)
-        //    rig.velocity = new Vector2(inputX * moveSpeed, rig.velocity.y);
+        if (isSlope && isGround & !isJump)
+            rig.velocity = perp * moveSpeed * inputX * -1f;
+        else if (!isSlope && isGround && !isJump)
+            rig.velocity = new Vector2(inputX * moveSpeed, 0);
+        else if (!isGround)
+            rig.velocity = new Vector2(inputX * moveSpeed, rig.velocity.y);
 
         Jump();
     }
