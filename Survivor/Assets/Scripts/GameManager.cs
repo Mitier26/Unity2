@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public float maxGameTime = 2 * 10f;
 
     [Header("# Player Info")]
+    public int playerId;            // 선택한 플레이어의 번호
     public int level;
     public float health;
     public float maxHealth = 100;
@@ -32,12 +33,15 @@ public class GameManager : MonoBehaviour
         Instance = this;
     }
 
-    public void GameStart()
+    public void GameStart(int id)
     {
-        health = maxHealth;
+        // 게임을 실행하면 선택한 것의 번호를 저장한다.
+        playerId = id;
 
+        health = maxHealth;
+        player.gameObject.SetActive(true);
         // 임시로 무기를 준다.
-        uiLevelUp.Select(0);
+        uiLevelUp.Select(playerId % 2);
 
         Resume();
     }

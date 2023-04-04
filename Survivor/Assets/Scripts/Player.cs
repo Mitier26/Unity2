@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     public Scanner scanner;
     public Hand[] hands;
+    public RuntimeAnimatorController[] animCon;
 
     private void Awake()
     {
@@ -22,6 +23,12 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         scanner = GetComponent<Scanner>();
         hands = GetComponentsInChildren<Hand>(true);
+    }
+
+    private void OnEnable()
+    {
+        moveSpeed *= Character.Speed;
+        animator.runtimeAnimatorController = animCon[GameManager.Instance.playerId];
     }
 
     private void Update()

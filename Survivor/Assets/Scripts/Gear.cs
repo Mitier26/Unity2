@@ -55,10 +55,12 @@ public class Gear : MonoBehaviour
             switch(weapon.id)
             {
                 case 0:     // 근접 무기
-                    weapon.speed = 150 + (150 * rate);
+                    float speed = 150 * Character.WeaponSpeed;
+                    weapon.speed = speed + (speed * rate);
                     break;
                 default:    // 원거리 무기
-                    weapon.speed = 0.5f * (1f - rate);
+                    speed = 0.5f * Character.WeaponRate;
+                    weapon.speed = speed * (1f - rate);
                     // 카운트의 마지막 값은 0.75 이다 1에서 0.75를 빼면 값이 작아지므로 발사 속도가 상승한다.
                     break;
             }
@@ -67,7 +69,7 @@ public class Gear : MonoBehaviour
 
     private void SpeedUp()
     {
-        float speed = 3;
+        float speed = 3 * Character.Speed;
         GameManager.Instance.player.moveSpeed = speed + speed * rate;
     }
 }
