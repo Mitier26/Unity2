@@ -29,11 +29,12 @@ public class GodGameManager : MonoBehaviour
 
     }
 
-    public void GameStart(int id)
+    public void GameStart(int id, Vector2 pos)
     {
         characterId = id;
         isStart = true;
         player.GetComponent<Animator>().runtimeAnimatorController = animationControllers[characterId];
+        player.transform.position = pos;
         player.SetActive(true);
     }
 }

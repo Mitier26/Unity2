@@ -5,6 +5,7 @@ using UnityEngine.U2D;
 public class GodOpening : MonoBehaviour
 {
     public int id;                                      // 선택한 케릭터 번호
+    public GameObject player;
 
     [SerializeField]
     private Sprite[] characterImages;                   // 캐릭터의 기본 그림
@@ -31,6 +32,10 @@ public class GodOpening : MonoBehaviour
     private ParticleSystem openParticle;                // 문이 열릴 때 출력하는 이팩트
     [SerializeField]
     private ParticleSystem falldownParticle;            // 떨어질 때 출력하는 이팩트
+    [SerializeField]
+    private ParticleSystem falldownParticle2;            // 떨어질 때 출력하는 이팩트
+    [SerializeField]
+    private ParticleSystem impactParticle;
     private ParticleSystem.MainModule mainModule;       // 이팩트의 기본색 변경을 위한 것
 
 
@@ -156,12 +161,15 @@ public class GodOpening : MonoBehaviour
     {
         Vector3 startPos = transform.position;
 
+        falldownParticle2.gameObject.SetActive(true);
+        falldownParticle2.Play();
         // 올라가는 애니메이션
         Vector3 targetPos = startPos + Vector3.up * 3f;
         float moveTime = 1.5f;
         yield return MoveToPosition(targetPos, moveTime, false);
 
         // 떨어지는 애니메이션
+        
         targetPos = startPos + Vector3.down * 2.5f;
         moveTime = 2.5f;
         yield return MoveToPosition(targetPos, moveTime, true);
@@ -170,6 +178,9 @@ public class GodOpening : MonoBehaviour
         targetPos = startPos;
         moveTime = 1f;
         yield return MoveToPosition(targetPos, moveTime, false);
+
+        falldownParticle2.Stop();
+        falldownParticle2.gameObject.SetActive(false);
 
         yield break;
     }
@@ -228,7 +239,7 @@ public class GodOpening : MonoBehaviour
         Vector3 startCameraPos = Camera.main.transform.position;
         Vector3 targetCameraPos = new Vector3(0, 0, -10);
 
-        float moveTime = 5f;
+        float moveTime = 2f;
         float elapsedTime = 0f;
 
         while(elapsedTime < moveTime)
@@ -246,7 +257,82 @@ public class GodOpening : MonoBehaviour
 
     private IEnumerator Impact()
     {
+        // 기본 위치를 변경한다.
+        transform.position = Vector3.up * 10f;
+
+        // 이동 준비
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = Vector3.down * 2f;
+        float moveTime = 0.5f;
+
+        // 이동
+        yield return StartCoroutine(MoveToPosition(targetPosition, moveTime, false));
+
+        // 파티클 종료
+        falldownParticle.Stop();
+        falldownParticle.gameObject.SetActive(false);
+
+        float elapsed = 0;
+
+        Vector2 point = shapeController.spline.GetPosition(5);
+        while(elapsed < 0.2)
+        {
+            float percent = elapsed / 0.2f;
+            point.y = Mathf.Lerp(0, -1.5f, percent);
+            shapeController.spline.SetPosition(5, point);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
+        impactParticle.gameObject.SetActive(true);
+        impactParticle.Play();
+
+        yield return new WaitForSeconds(0.5f);
+        Time.timeScale = 0.2f;
+        Explosion();
+        yield return new WaitForSeconds(1f);
+        Time.timeScale = 1f;
+
+        elapsed = 0;
+        
+        appearParticle.gameObject.SetActive(true);
+        appearParticle.Play();
+        obj.SetActive(false);
+        GodGameManager.Instance.GameStart(id, obj.transform.position);
+
+        while (elapsed < 0.2)
+        {
+            float percent = elapsed / 0.2f;
+            point.y = Mathf.Lerp(-1.5f, 0f, percent);
+            shapeController.spline.SetPosition(5, point);
+
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+
 
         yield break;
+    }
+
+    public float explosionRadius;
+    public float explosionForce;
+    private void Explosion()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius,LayerMask.GetMask("OpeningObject"));
+
+        foreach (Collider2D collider in colliders)
+        {
+            Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+            collider.isTrigger = true;
+            if(rb != null)
+            {
+                Vector2 dir = (rb.transform.position - transform.position).normalized;
+                rb.AddForce(dir * explosionForce);
+            }
+            Destroy(collider.gameObject, 5f);
+        }
     }
 }
