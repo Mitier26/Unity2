@@ -32,6 +32,7 @@ public class GodPlayer2 : MonoBehaviour
     private Vector2 arrowDirection; // 점프 방향
     private float arrowAngle;       // 점프 각도
 
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,7 +42,7 @@ public class GodPlayer2 : MonoBehaviour
 
     private void Update()
     {
-        //if (!isGround) return;
+
         // x값을 입력 받는다.
         inputX = Input.GetAxis("Horizontal");
 
@@ -54,7 +55,7 @@ public class GodPlayer2 : MonoBehaviour
         animator.SetBool("Ground", hit);
 
         // 기울기
-        if(Mathf.Abs(angle) > 35) isSlope = true;
+        if(Mathf.Abs(angle) > 25) isSlope = true;
         else isSlope = false;
 
         animator.SetBool("Slope", isSlope);

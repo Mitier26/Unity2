@@ -40,10 +40,5 @@ public class TestShape : MonoBehaviour
             point.y += y;
             spriteShapeController.spline.SetPosition(i + 2, point);
         }
-
-
-
     }
-
-
 }

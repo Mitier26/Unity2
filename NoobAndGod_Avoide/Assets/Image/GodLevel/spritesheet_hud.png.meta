@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 26109e82199efca45bf078b0d24837e0
+guid: ecc7f964b4e4b974b8e90a40f5fe609c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -141,118 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pipe_Ground
+      name: BlueBall
       rect:
         serializedVersion: 2
-        x: 260
-        y: 40
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 3, y: 0, z: 3, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3f3f92571481254ba2cd2fd7269e7ed
-      internalID: -1795629787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pipe_TopLeft
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 80
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 987356f64139377498723259718293bc
-      internalID: -175678845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pipe_BottomLeft
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 60
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6122423e19fe75a46bacf7559dd9a457
-      internalID: -2125248856
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pipe_BottomRight
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 60
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 66782cf9bcef2ca4dbffc2f7323567e1
-      internalID: -1067225649
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pipe_TopRight
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 80
-        width: 18
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 133e920c6bd81104eac1c4e8fa600eb0
-      internalID: 1009286466
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: LeftArrow
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 80
-        width: 18
-        height: 18
+        x: 278
+        y: 530
+        width: 86
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2ae49cd803560849b8f6d50b7a4c103
-      internalID: 1269878559
+      spriteID: 658415c4fae9d0a449ed23a822977ba4
+      internalID: 319918263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RightArrow
+      name: GreenBall
       rect:
         serializedVersion: 2
-        x: 160
-        y: 80
-        width: 18
-        height: 18
+        x: 278
+        y: 658
+        width: 86
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,8 +176,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6bf2246d09206d408aa895dbf4c4838
-      internalID: 317371452
+      spriteID: 8f4bbb617fc306e4f8a173cf9d96e74c
+      internalID: -1602610843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrayBall
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 404
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb15cf29e6d50846966342f241e9b49
+      internalID: -1749241480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PinkBall
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 530
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43756582550a59d4db75e697b3d854d2
+      internalID: -1047811525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YellowBall
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 916
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc662c233ed4ac42ad7c7b4959299db
+      internalID: 786064066
       vertices: []
       indices: 
       edges: []
@@ -298,29 +256,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      1: 604178242
-      2: 2122417383
-      3: 2014387436
-      4: -780429273
-      5: -435240272
-      6: 934102950
-      7: 1472584708
-      8: 255213068
-      Bottom_Left: 264059308
-      Bottom_Right: 643106089
-      Fill: 1268260743
-      Ground: -712511242
-      LeftArrow: 1269878559
-      Pipe_BottomLeft: -2125248856
-      Pipe_BottomRight: -1067225649
-      Pipe_Ground: -1795629787
-      Pipe_TopLeft: -175678845
-      Pipe_TopRight: 1009286466
-      PiprSide: 22239807
-      RightArrow: 317371452
-      Side: 369078121
-      Top_Left: -1374166488
-      Top_Right: 496588284
+      BlueBall: 319918263
+      GrayBall: -1749241480
+      GreenBall: -1602610843
+      PinkBall: -1047811525
+      YellowBall: 786064066
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
