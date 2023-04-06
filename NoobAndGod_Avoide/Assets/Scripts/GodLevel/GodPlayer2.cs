@@ -21,6 +21,7 @@ public class GodPlayer2 : MonoBehaviour
     private bool isGround;          // 바닥에 있는지 확인용
     private bool isJump;            // 점프 중인지 확인용
     private bool isSlope;
+    private bool isJumpSound;
 
     [SerializeField]
     private float checkDistance;    // 레이저의 길이, 검색 범위
@@ -104,8 +105,12 @@ public class GodPlayer2 : MonoBehaviour
     {
         if (isJump)
         {
+            if(!isJumpSound) GodAudioManager.Instance.PlaySoundEffect(GodAudioManager.SFX.Jump);
+            isJumpSound = true;
+
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * 5);
             angle = transform.rotation.eulerAngles.z;
+            
         }
         else 
         {
@@ -114,10 +119,15 @@ public class GodPlayer2 : MonoBehaviour
         
         // 점프한다.
         Jump();
+
+        float clampX = Mathf.Clamp(transform.position.x, -22f, 22f);
+        transform.position = new Vector3(clampX, transform.position.y, transform.position.z);
     }
 
     private void Jump()
     {
+       
+
         if (isGround)
         {
             if (Input.GetAxis("Jump") != 0)
@@ -129,12 +139,20 @@ public class GodPlayer2 : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Obstacle"))
+        {
+            GodGameManager.Instance.GameOver();
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         // 바닥에 있으면 
         if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            
+            isJumpSound = false;
             isGround = true;
             isJump = false;
         }

@@ -6,30 +6,37 @@ using UnityEngine.U2D;
 
 public class GodGameManager : MonoBehaviour
 {
-    public static GodGameManager Instance;
+    public static GodGameManager Instance;              // 싱글톤
+    [SerializeField]
+    private GodCameraController cam;                    // 카메라
 
-    public int characterId;         // 선택된 케릭터의 번호
+    public int characterId;                             // 선택된 케릭터의 번호
 
     [SerializeField]
-    private GameObject player;      // 플레이어
+    private GameObject player;                          // 플레이어
 
-    public bool isOpening;          // 게임의 오프닝
-    public bool isStart;            // 게임의 시작
+    public bool isOpening;                              // 게임의 오프닝
+    public bool isStart;                                // 게임의 시작
 
 
-    [SerializeField]                // 플레이어의 그림을 바꾸어줄 Animator
+    [SerializeField]                                    // 플레이어의 그림을 바꾸어줄 Animator
     private RuntimeAnimatorController[] animationControllers;
 
     [SerializeField]
-    private TextMeshProUGUI scoreText;
+    private TextMeshProUGUI scoreText;                  // 점수 표시 텍스트
+    [SerializeField]
+    private TextMeshProUGUI highScoreText;              // 결과 창의 최고 점수
+    [SerializeField]
+    private TextMeshProUGUI resultScoreText;            // 결과 창의 현재 점수
+    [SerializeField]
+    private GameObject gameoverPanel;                     // 결과 창
 
     [SerializeField]
-    private SpriteShapeController groundController;
-    private Vector2[] groundPoints;
-    private float[] groundPointYOffsets;
-    
+    private SpriteShapeController groundController;     // 바닥
+    private Vector2[] groundPoints;                     // 바닥의 포인트
+    private float[] groundPointYOffsets;                // 바닥의 이동 간격
 
-    private int score;
+    private int score;                                  // 점수
     public int Score
     {
         get { return score; }
@@ -42,11 +49,15 @@ public class GodGameManager : MonoBehaviour
         }
     }
 
-    private int highScore;
+    private int highScore;                              // 최고 점수
     public int HighScore
     {
         get { return highScore; }
-        set {  highScore = value;}
+        set 
+        { 
+            highScore = value;
+            PlayerPrefs.SetInt("GodHighScore", value);
+        }
     }
 
     private void Awake()
@@ -59,6 +70,9 @@ public class GodGameManager : MonoBehaviour
         isStart = false;
 
         Score = 0;
+        Time.timeScale = 1f;
+
+        if (!PlayerPrefs.HasKey("GodHighScore")) PlayerPrefs.SetInt("GodHighScore", 0);
     }
 
     private void Start()
@@ -79,6 +93,7 @@ public class GodGameManager : MonoBehaviour
         isStart = true;
         player.GetComponent<Animator>().runtimeAnimatorController = animationControllers[characterId];
         player.transform.position = pos;
+        cam.SetOffset();
         player.SetActive(true);
         scoreText.gameObject.SetActive(true);
 
@@ -87,6 +102,17 @@ public class GodGameManager : MonoBehaviour
 
     public void GameOver()
     {
+        Time.timeScale = 0f;
+        
+        if(Score > highScore)
+        {
+            HighScore = Score;
+        }
+
+        gameoverPanel.SetActive(true);
+        highScoreText.text = HighScore.ToString();
+        resultScoreText.text = Score.ToString();
+
         isStart = false;
         player.SetActive(false);
     }
@@ -95,7 +121,7 @@ public class GodGameManager : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.4f);
             Score++;
         }
     }

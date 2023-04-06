@@ -71,7 +71,6 @@ public class GodPlayer : MonoBehaviour
             rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
         }
 
-
         Jump();
     }
 

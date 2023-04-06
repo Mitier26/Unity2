@@ -92,6 +92,7 @@ public class GodOpening : MonoBehaviour
         // 이팩트 출력
         appearParticle.gameObject.SetActive(true);
         appearParticle.Play();
+        GodAudioManager.Instance.PlaySoundEffect(GodAudioManager.SFX.Pop);
 
         currentScale = 0f;
 
@@ -125,6 +126,9 @@ public class GodOpening : MonoBehaviour
         float shakeDuration = 0.5f;
         float shakeMagnitude = 0.1f;
         float elapsed = 0f;
+
+        // 사운드 출력
+        GodAudioManager.Instance.PlaySoundEffect(GodAudioManager.SFX.Open);
 
         // 카메라를 흔든다.
         while(elapsed < shakeDuration)
@@ -168,8 +172,9 @@ public class GodOpening : MonoBehaviour
         float moveTime = 1.5f;
         yield return MoveToPosition(targetPos, moveTime, false);
 
+        GodAudioManager.Instance.PlaySoundEffect(GodAudioManager.SFX.Down);
+
         // 떨어지는 애니메이션
-        
         targetPos = startPos + Vector3.down * 2.5f;
         moveTime = 2.5f;
         yield return MoveToPosition(targetPos, moveTime, true);
@@ -241,17 +246,19 @@ public class GodOpening : MonoBehaviour
 
         float moveTime = 2f;
         float elapsedTime = 0f;
+        float camDistance = 5f;
 
         while(elapsedTime < moveTime)
         {
+            Camera.main.orthographicSize = camDistance;
             Camera.main.transform.position = Vector3.Lerp(startCameraPos, targetCameraPos, elapsedTime);
-
+            camDistance = Mathf.Lerp(5, 10, elapsedTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         Camera.main.transform.position = targetCameraPos;
-
+        
         yield break;
     }
 
@@ -286,6 +293,7 @@ public class GodOpening : MonoBehaviour
             yield return null;
         }
 
+        GodAudioManager.Instance.PlaySoundEffect(GodAudioManager.SFX.Shock);
         impactParticle.gameObject.SetActive(true);
         impactParticle.Play();
 
@@ -296,7 +304,9 @@ public class GodOpening : MonoBehaviour
         Time.timeScale = 1f;
 
         elapsed = 0;
-        
+
+        GodAudioManager.Instance.PlaySoundEffect(GodAudioManager.SFX.Impact);
+
         appearParticle.gameObject.SetActive(true);
         appearParticle.Play();
         obj.SetActive(false);

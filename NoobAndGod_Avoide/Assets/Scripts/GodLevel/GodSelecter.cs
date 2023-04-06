@@ -22,6 +22,7 @@ public class GodSelecter : MonoBehaviour
 
     public void LeftArrow()
     {
+        GodAudioManager.Instance.PlaySoundEffect(GodAudioManager.SFX.Btn);
         characterIndex--;
         if (characterIndex < 0)
             characterIndex = characterImages.Length-1;
@@ -30,6 +31,7 @@ public class GodSelecter : MonoBehaviour
 
     public void RighetButton()
     {
+        GodAudioManager.Instance.PlaySoundEffect(GodAudioManager.SFX.Btn);
         characterIndex++;
         if(characterIndex > characterImages.Length-1)
             characterIndex = 0;

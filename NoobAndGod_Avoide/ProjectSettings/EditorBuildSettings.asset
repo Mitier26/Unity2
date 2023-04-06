@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProfessionalLevel.unity
     guid: 93dd39fdf4631054db7d642098f7c039
+  - enabled: 1
+    path: Assets/Scenes/GodLevel.unity
+    guid: 43edb851516c84c489b1d159c0dd5192
   m_configObjects: {}
