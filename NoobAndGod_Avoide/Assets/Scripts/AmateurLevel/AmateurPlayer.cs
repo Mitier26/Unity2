@@ -6,6 +6,7 @@ public class AmateurPlayer : MonoBehaviour
 {
     private Rigidbody2D rigidbody2d;            // Rigidbody를 사용하기 위해
     private Animator animator;                  // Amimation 제어를 하기 위해
+    public VariableJoystick joystick;
 
     [SerializeField]
     private float movespeed;                    // 이동 속도
@@ -22,7 +23,8 @@ public class AmateurPlayer : MonoBehaviour
     {
         if (!AmateurManager.instance.isPlay) return;
 
-        moveX = Input.GetAxisRaw("Horizontal");
+        moveX = joystick.Horizontal;
+        //moveX = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("moveX", Mathf.Abs(moveX));
     }
 
@@ -54,6 +56,7 @@ public class AmateurPlayer : MonoBehaviour
         {
             AmateurManager.instance.GameOver();
             AudioManager.instance.PlaySoundEffect(AudioManager.SFX.GameOver);
+            joystick.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
 

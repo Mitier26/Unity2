@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class ProManager : MonoBehaviour
 {
-    const string PRO_SAVE_TEXT = "ProHighScore";
-
     public static ProManager instance;
 
     [Header("--------State--------")]
@@ -24,6 +22,9 @@ public class ProManager : MonoBehaviour
     private TextMeshProUGUI resultScoreText;        // 결과창 점수
     [SerializeField]
     private TextMeshProUGUI resultHighScoreText;    // 결과창 최고 점수
+
+    public GameObject joystick;
+    public GameObject jumpButton;
 
     [SerializeField]
     private Image fadeImage;
@@ -55,10 +56,10 @@ public class ProManager : MonoBehaviour
     private int highScore;
     public int HighScore
     {
-        get { return PlayerPrefs.GetInt(PRO_SAVE_TEXT); }
+        get { return PlayerPrefs.GetInt(Constants.ProfessionalSaveString); }
         set
         {
-            PlayerPrefs.SetInt(PRO_SAVE_TEXT, value);
+            PlayerPrefs.SetInt(Constants.ProfessionalSaveString, value);
             highScore = value;
             resultHighScoreText.text = highScore.ToString();
         }
@@ -69,7 +70,7 @@ public class ProManager : MonoBehaviour
     {
         if (instance == null) instance = this;
 
-        if (!PlayerPrefs.HasKey(PRO_SAVE_TEXT)) PlayerPrefs.SetInt(PRO_SAVE_TEXT, 0);
+        if (!PlayerPrefs.HasKey(Constants.ProfessionalSaveString)) PlayerPrefs.SetInt(Constants.ProfessionalSaveString, 0);
         Score = 0;
         isString = false;
         Time.timeScale = 1f;
@@ -78,6 +79,8 @@ public class ProManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        Time.timeScale = 1.0f;
+
         yield return new WaitForSeconds(0.3f);
 
         yield return StartCoroutine(Fade());
@@ -108,6 +111,9 @@ public class ProManager : MonoBehaviour
 
     private IEnumerator CameraMove()
     {
+        joystick.SetActive(true);
+        jumpButton.SetActive(true);
+
         playTime = 0;
         percent = 0;
 
@@ -115,11 +121,11 @@ public class ProManager : MonoBehaviour
         {
             playTime += Time.deltaTime;
             percent = playTime / 1;
-            Camera.main.orthographicSize = Mathf.Lerp(1f, 10f, percent);
+            Camera.main.orthographicSize = Mathf.Lerp(1f, 7f, percent);
 
             yield return null;
         }
-        Camera.main.orthographicSize = 10f;
+        Camera.main.orthographicSize = 7f;
         yield break;
     }
 
@@ -153,5 +159,8 @@ public class ProManager : MonoBehaviour
         Time.timeScale = 0f;
         resultPanel.SetActive(true);
         if(Score > HighScore) HighScore = Score;
+
+        joystick.SetActive(false);
+        jumpButton.SetActive(false);
     }
 }

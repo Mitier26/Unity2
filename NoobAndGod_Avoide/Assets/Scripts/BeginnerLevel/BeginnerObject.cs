@@ -17,7 +17,6 @@ public class BeginnerObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
         if(collision.gameObject.name == "BeginnerDestroyer")
         {
             Destroy(gameObject);

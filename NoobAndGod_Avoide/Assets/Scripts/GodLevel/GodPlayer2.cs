@@ -9,6 +9,8 @@ public class GodPlayer2 : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
+    public FixedJoystick joystick;
+
     public float inputX;           // 입력 받는 X 값
     [SerializeField]
     private float moveSpeed;        // 이동 속도
@@ -45,7 +47,8 @@ public class GodPlayer2 : MonoBehaviour
     {
 
         // x값을 입력 받는다.
-        inputX = Input.GetAxis("Horizontal");
+        inputX = joystick.Horizontal;
+        //inputX = Input.GetAxis("Horizontal");
 
         RayHit();           // 레이저
         ArrowDirection();   // 점프 방향
@@ -56,13 +59,13 @@ public class GodPlayer2 : MonoBehaviour
         animator.SetBool("Ground", hit);
 
         // 기울기
-        if(Mathf.Abs(angle) > 25) isSlope = true;
+        if (Mathf.Abs(angle) > 25) isSlope = true;
         else isSlope = false;
 
         animator.SetBool("Slope", isSlope);
-        
+
         // 그림의 좌우 반전
-        if(inputX < 0)
+        if (inputX < 0)
         {
             spriteRenderer.flipX = true;
         }
@@ -105,43 +108,52 @@ public class GodPlayer2 : MonoBehaviour
     {
         if (isJump)
         {
-            if(!isJumpSound) GodAudioManager.Instance.PlaySoundEffect(GodAudioManager.SFX.Jump);
+            if (!isJumpSound) GodAudioManager.Instance.PlaySoundEffect(GodAudioManager.SFX.Jump);
             isJumpSound = true;
 
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * 5);
             angle = transform.rotation.eulerAngles.z;
-            
+
         }
-        else 
+        else
         {
             rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
         }
-        
+
         // 점프한다.
-        Jump();
+        //Jump();
 
         float clampX = Mathf.Clamp(transform.position.x, -22f, 22f);
         transform.position = new Vector3(clampX, transform.position.y, transform.position.z);
     }
 
-    private void Jump()
+    public void Jump()
     {
-       
-
         if (isGround)
         {
-            if (Input.GetAxis("Jump") != 0)
-            {
-                isJump = true;
-                animator.SetTrigger("Jump");
-                rb.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
-            }
+            isJump = true;
+            animator.SetTrigger("Jump");
+            rb.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
+
         }
     }
 
+    //private void Jump()
+    //{
+    //    if (isGround)
+    //    {
+    //        if (Input.GetAxis("Jump") != 0)
+    //        {
+    //            isJump = true;
+    //            animator.SetTrigger("Jump");
+    //            rb.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
+    //        }
+    //    }
+    //}
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Obstacle"))
+        if (collision.CompareTag("Obstacle"))
         {
             GodGameManager.Instance.GameOver();
         }
@@ -150,7 +162,7 @@ public class GodPlayer2 : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         // 바닥에 있으면 
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             isJumpSound = false;
             isGround = true;

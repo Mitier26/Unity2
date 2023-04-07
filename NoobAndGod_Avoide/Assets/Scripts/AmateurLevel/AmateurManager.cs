@@ -11,13 +11,13 @@ public class AmateurManager : MonoBehaviour
     public bool isPlay = false;                         // 게임이 시작 되었는지 확인
 
     [SerializeField]
-    private UnityEngine.GameObject one, two, three, go;             // 카운트 다운 오브젝트
+    private GameObject one, two, three, go;             // 카운트 다운 오브젝트
 
     [SerializeField]
     private AmateurSpawner spawner;                         // 소환기에 명령을 전달하기 위해 
     
     [SerializeField]
-    private UnityEngine.GameObject gameOverPanel;                   // 게임 오버 오브젝트
+    private GameObject gameOverPanel;                   // 게임 오버 오브젝트
 
     [SerializeField]
     private TextMeshProUGUI scoreText;                  // 게임 내에 표시되는 점수
@@ -79,13 +79,13 @@ public class AmateurManager : MonoBehaviour
     private int highScore;                              // 최고 점수 프로퍼티
     public int HighScore
     {
-        get { return PlayerPrefs.GetInt("AmateurHighScore"); }
+        get { return PlayerPrefs.GetInt(Constants.AmateurSaveString); }
         set
         {
             highScore = value;
             resultHighScoreText.text = highScore.ToString();
             // 값이 변하면 UI도 변경하고 값을 저장
-            PlayerPrefs.SetInt("AmateurHighScore", highScore);
+            PlayerPrefs.SetInt(Constants.AmateurSaveString, highScore);
         }
     }
 
@@ -99,7 +99,7 @@ public class AmateurManager : MonoBehaviour
         Level = 0;
         Score = 0;
         // 최고 점수가 저장된것이 없다면 최고점수를 0 으로 저장
-        if(!PlayerPrefs.HasKey("AmateurHighScore"))
+        if(!PlayerPrefs.HasKey(Constants.AmateurSaveString))
         {
             // 프로퍼티에서 최고 점수의 값이 입력되면 저장된다.
             HighScore = 0;
@@ -108,6 +108,8 @@ public class AmateurManager : MonoBehaviour
         spawnObjectInterval = 4f;
         spawnFishInterval = 5f;
         spawnGravity = 0.1f;
+
+        Time.timeScale = 1.0f;
 
         StartCoroutine(CountDown());
     }

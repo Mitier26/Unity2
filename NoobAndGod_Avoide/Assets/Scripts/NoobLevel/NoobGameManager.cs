@@ -16,7 +16,7 @@ public class NoobGameManager : MonoBehaviour
     private NoobObstacle[] noobObstacles;
 
     [SerializeField]
-    private UnityEngine.GameObject gameoverPanel;
+    private GameObject gameoverPanel;
 
     [SerializeField]
     private Color[] colors;
@@ -38,9 +38,9 @@ public class NoobGameManager : MonoBehaviour
         noobObstacles[activeCount].gameObject.SetActive(true);
         ChangeBackgroundColor();
 
-        if(!PlayerPrefs.HasKey("NoobHighScore"))
+        if(!PlayerPrefs.HasKey(Constants.NoobSaveString))
         {
-            PlayerPrefs.SetInt("NoobHighScore", 0);
+            PlayerPrefs.SetInt(Constants.NoobSaveString, 0);
         }
     }
 
@@ -98,12 +98,12 @@ public class NoobGameManager : MonoBehaviour
 
     public void GameOver()
     {
-        int highScore = PlayerPrefs.GetInt("HighScore");
+        int highScore = PlayerPrefs.GetInt(Constants.NoobSaveString);
 
         if(score > highScore)
         {
             highScore = score;
-            PlayerPrefs.SetInt("HighScore", score);
+            PlayerPrefs.SetInt(Constants.NoobSaveString, score);
         }
 
         resultScoreText.text = score.ToString();

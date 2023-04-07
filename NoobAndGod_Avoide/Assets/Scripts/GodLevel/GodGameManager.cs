@@ -14,6 +14,8 @@ public class GodGameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject player;                          // 플레이어
+    public GameObject jumpButton;
+    public GameObject joystick;
 
     public bool isOpening;                              // 게임의 오프닝
     public bool isStart;                                // 게임의 시작
@@ -56,7 +58,7 @@ public class GodGameManager : MonoBehaviour
         set 
         { 
             highScore = value;
-            PlayerPrefs.SetInt("GodHighScore", value);
+            PlayerPrefs.SetInt(Constants.GodSaveString, value);
         }
     }
 
@@ -72,7 +74,7 @@ public class GodGameManager : MonoBehaviour
         Score = 0;
         Time.timeScale = 1f;
 
-        if (!PlayerPrefs.HasKey("GodHighScore")) PlayerPrefs.SetInt("GodHighScore", 0);
+        if (!PlayerPrefs.HasKey(Constants.GodSaveString)) PlayerPrefs.SetInt(Constants.GodSaveString, 0);
     }
 
     private void Start()
@@ -95,6 +97,8 @@ public class GodGameManager : MonoBehaviour
         player.transform.position = pos;
         cam.SetOffset();
         player.SetActive(true);
+        joystick.SetActive(true);
+        jumpButton.SetActive(true);
         scoreText.gameObject.SetActive(true);
 
         StartCoroutine(Scoring());
@@ -108,6 +112,9 @@ public class GodGameManager : MonoBehaviour
         {
             HighScore = Score;
         }
+
+        joystick.SetActive(false); 
+        jumpButton.SetActive(false);
 
         gameoverPanel.SetActive(true);
         highScoreText.text = HighScore.ToString();

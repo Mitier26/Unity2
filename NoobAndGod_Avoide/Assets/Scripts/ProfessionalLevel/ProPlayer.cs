@@ -7,6 +7,7 @@ public class ProPlayer : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private CapsuleCollider2D capsuleCollider;          // 바닥 확인을 위한 크기 사용
+    public FixedJoystick joystick;
 
     [SerializeField]
     private float moveSpeed = 5f;                       // 이동 속도
@@ -31,7 +32,8 @@ public class ProPlayer : MonoBehaviour
     {
         if (!ProManager.instance.isString) return;
 
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        horizontalInput = joystick.Horizontal;
+        //horizontalInput = Input.GetAxisRaw("Horizontal");
 
         HorizontalMovement();
 
@@ -40,6 +42,12 @@ public class ProPlayer : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
             isGround = false;
         }
+    }
+
+    public void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+        isGround = false;
     }
 
     private void FixedUpdate()

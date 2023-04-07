@@ -33,10 +33,11 @@ public class BeginnerManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1.0f;
         score = 0;
         isLive = true;
         gameoverPanel.SetActive(false);
-        if (!PlayerPrefs.HasKey("BeginnerHighScore")) PlayerPrefs.SetInt("BeginnerHighScore", 0);
+        if (!PlayerPrefs.HasKey(Constants.BginnerSaveString)) PlayerPrefs.SetInt(Constants.BginnerSaveString, 0);
     }
 
     private void Update()
@@ -65,11 +66,11 @@ public class BeginnerManager : MonoBehaviour
         gameoverPanel.SetActive(true);
         resultScoreText.text = score.ToString("F0");
 
-        int highScore = PlayerPrefs.GetInt("BeginnerHighScore");
+        int highScore = PlayerPrefs.GetInt(Constants.BginnerSaveString);
         if(score > highScore)
         {
             highScore = (int)score;
-            PlayerPrefs.SetInt("BeginnerHighScore", highScore);
+            PlayerPrefs.SetInt(Constants.BginnerSaveString, highScore);
         }
         resultHighScoreText.text = highScore.ToString();
 
