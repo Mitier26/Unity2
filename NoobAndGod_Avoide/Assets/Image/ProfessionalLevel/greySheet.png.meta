@@ -170,7 +170,7 @@ TextureImporter:
         width: 190
         height: 49
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 10, y: 10, z: 10, w: 10}
       outline: []
       physicsShape: []
@@ -178,6 +178,27 @@ TextureImporter:
       bones: []
       spriteID: f87c07f938ddd1a4bae08e19de3f1da2
       internalID: 301325698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Exit
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 43
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 9, y: 9, z: 9, w: 9}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21e4acea9c755f342b3743152d9ecea8
+      internalID: 815247139
       vertices: []
       indices: 
       edges: []
@@ -193,6 +214,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Exit: 815247139
       board: 1825871397
       button: 301325698
   spritePackingTag: 

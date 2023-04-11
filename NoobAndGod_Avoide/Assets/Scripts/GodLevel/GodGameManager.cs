@@ -93,7 +93,7 @@ public class GodGameManager : MonoBehaviour
     {
         characterId = id;
         isStart = true;
-        player.GetComponent<Animator>().runtimeAnimatorController = animationControllers[characterId];
+        player.GetComponent<GodPlayer2>().animator.runtimeAnimatorController = animationControllers[characterId];
         player.transform.position = pos;
         cam.SetOffset();
         player.SetActive(true);

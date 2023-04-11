@@ -7,7 +7,7 @@ public class GodCameraController : MonoBehaviour
     [SerializeField]
     private Transform player;       // 따라갈 대상
     [SerializeField]
-    private float smooting = 5f;    // 천천히 이동하기 위한것
+    private float smooting = 15f;    // 천천히 이동하기 위한것
 
     private Vector3 offset;         // 플레이어와 카메라 사이의 거리
 
@@ -17,7 +17,7 @@ public class GodCameraController : MonoBehaviour
             offset = transform.position - player.position;
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (!GodGameManager.Instance.isStart) return;
 

@@ -7,7 +7,7 @@ public class GodGhost2 : MonoBehaviour
     [SerializeField]
     private GameObject ghostPrefab;         // ¿‹ªÛ »ø∞˙ ø¿∫Í¡ß∆Æ
 
-    private GodPlayer2 player;              // «√∑¿¿ÃæÓ
+    public GodPlayer2 player;              // «√∑¿¿ÃæÓ
 
     [SerializeField]
     private float ghostDelay;               // ¿‹ªÛ µÙ∑π¿Ã
@@ -15,11 +15,6 @@ public class GodGhost2 : MonoBehaviour
 
     [SerializeField]
     private Color ghostColor;               // ¿‹ªÛ ªˆ
-
-    private void Awake()
-    {
-        player = GetComponent<GodPlayer2>();
-    }
 
 
     private void Update()
@@ -33,6 +28,7 @@ public class GodGhost2 : MonoBehaviour
             go.GetComponent<SpriteRenderer>().color = ghostColor;
             go.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
             go.transform.position = transform.position;
+            go.transform.rotation = transform.rotation;
             go.transform.localScale = transform.localScale;
 
             if (player.inputX < 0)

@@ -37,15 +37,17 @@ public class ProPlayer : MonoBehaviour
 
         HorizontalMovement();
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGround)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
-            isGround = false;
-        }
+        //if (Input.GetKeyDown(KeyCode.Space) && isGround)
+        //{
+        //    rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+        //    isGround = false;
+        //}
     }
 
     public void Jump()
     {
+        if (!isGround) return;
+
         rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
         isGround = false;
     }

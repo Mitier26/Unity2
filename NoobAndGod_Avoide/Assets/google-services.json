@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "721740133473",
+    "project_id": "nagavoide",
+    "storage_bucket": "nagavoide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721740133473:android:7db548fc9114435826e620",
+        "android_client_info": {
+          "package_name": "com.MKMK_Studio.NoobAndGod_Avoide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721740133473-pojacvo6411nlhcmp5ppsti27b5b605l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM-_yMZUmITU0wrkk3vCRSRMf5B5RnOPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721740133473-gdsaig32uuekft1js97373jegikcn0sf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
