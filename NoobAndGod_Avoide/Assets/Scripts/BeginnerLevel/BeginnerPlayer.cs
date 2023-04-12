@@ -88,9 +88,8 @@ public class BeginnerPlayer : MonoBehaviour
         }
         else if(Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            transform.position = new Vector3(slider.value, transform.position.y, 0f);
+            transform.position = new Vector3(slider.value , transform.position.y, 0f);
         }
-
         //transform.Translate(direction * moveSpeed * Time.deltaTime);
     }
 
