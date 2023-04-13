@@ -1,10 +1,9 @@
 {
   "project_info": {
     "project_number": "721740133473",
+    "firebase_url": "https://nagavoide-default-rtdb.firebaseio.com",
     "project_id": "nagavoide",
-    "storage_bucket": null,
-    "nagavoide.appspot.com": null,
-    "firebase_url": "https://nagavoide-default-rtdb.firebaseio.com/"
+    "storage_bucket": "nagavoide.appspot.com"
   },
   "client": [
     {
@@ -16,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "721740133473-pojacvo6411nlhcmp5ppsti27b5b605l.apps.googleusercontent.com",
+          "client_id": "721740133473-gdsaig32uuekft1js97373jegikcn0sf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

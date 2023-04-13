@@ -2,6 +2,7 @@ using Firebase;
 using Firebase.Auth;
 using Firebase.Database;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -106,6 +107,11 @@ public class FirebaseManager : MonoBehaviour
         StartCoroutine(UpdateDeaths(int.Parse(deathField.text)));
     }
 
+    public void ScoreboardButton()
+    {
+        StartCoroutine(LoadScoreBoardData());
+    }
+
     private IEnumerator Login(string email, string password)
     {
         // 파이어베이스에 이메일과 패스워드로 로그인이 가능한지 물어 본다.
@@ -149,6 +155,8 @@ public class FirebaseManager : MonoBehaviour
             Debug.LogWarning($"User signed in successfully: {User.DisplayName} ({User.Email})");
             warningLoginText.text = "";
             confirmLoginText.text = "Logged In";
+
+            StartCoroutine(LoadUserData());
 
             yield return new WaitForSeconds(2);
 
@@ -310,6 +318,66 @@ public class FirebaseManager : MonoBehaviour
         else
         {
 
+        }
+    }
+
+    private IEnumerator LoadUserData()
+    {
+        var DBTask = DBreference.Child("users").Child(User.UserId).GetValueAsync();
+
+        yield return new WaitUntil(() => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else if (DBTask.Result.Value == null)
+        {
+            xpField.text = "0";
+            killsField.text = "0";
+            deathField.text = "0";
+        }
+        else
+        {
+            DataSnapshot snapshot = DBTask.Result;
+
+            xpField.text = snapshot.Child("xp").Value.ToString();
+            killsField.text = snapshot.Child("kills").Value.ToString();
+            deathField.text = snapshot.Child("deaths").Value.ToString();
+        }
+    }
+
+    private IEnumerator LoadScoreBoardData()
+    {
+        var DBTask = DBreference.Child("users").OrderByChild("kills").GetValueAsync();
+
+        yield return new WaitUntil( () => DBTask.IsCompleted);
+
+        if (DBTask.Exception != null)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            DataSnapshot snapshot = DBTask.Result;
+
+            foreach(Transform child in scoreboardContent.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach(DataSnapshot childSnapshot in snapshot.Children.Reverse<DataSnapshot>())
+            {
+                string username = childSnapshot.Child("username").Value.ToString();
+                int kills = int.Parse(childSnapshot.Child("kills").Value.ToString());
+                int deaths = int.Parse(childSnapshot.Child("deaths").Value.ToString());
+                int xp = int.Parse(childSnapshot.Child("xp").Value.ToString());
+
+                GameObject scoreboardElement = Instantiate(scoreElement, scoreboardContent);
+                //scoreboardElement.GetComponent<ScoreElement>().newScoreElement(username, kills, deaths, xp);
+            }
+
+            //UIManager.instance.ScoreboardScreen();
         }
     }
 }
