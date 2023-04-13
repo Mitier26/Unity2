@@ -20,12 +20,16 @@ public class LevelUp : MonoBehaviour
 
         rect.localScale = Vector3.one;
         GameManager.Instance.Stop();
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.LevelUp);
+        AudioManager.instance.EffectBgm(true);
     }
 
     public void Hide()
     {
         rect.localScale = Vector3.zero;
         GameManager.Instance.Resume();
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Select);
+        AudioManager.instance.EffectBgm(false);
     }
 
     // 아이템을 선택하는 것이다.
