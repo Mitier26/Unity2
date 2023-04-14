@@ -43,7 +43,7 @@ public class AdManager : MonoBehaviour
         }
 
         bannerView = new BannerView(adUnitTestId, AdSize.GetLandscapeAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth),AdPosition.Bottom);
-        //bannerView = new BannerView(adUnitTestId, AdSize.IABBanner, AdPosition.Bottom);
+        //bannerView = new BannerView(adUnitTestId, AdSize.Banner, AdPosition.Bottom);
     }
 
     public void LoadAd()

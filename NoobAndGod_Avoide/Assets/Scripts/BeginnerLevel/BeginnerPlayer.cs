@@ -16,7 +16,7 @@ public class BeginnerPlayer : MonoBehaviour
 
     private void Start()
     {   
-        if(Application.platform == RuntimePlatform.Android)
+        if(Application.platform == RuntimePlatform.IPhonePlayer)
         {
             slider.gameObject.SetActive(true);
         }
