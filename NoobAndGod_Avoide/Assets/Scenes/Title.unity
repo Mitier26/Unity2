@@ -6366,7 +6366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1472552173}
-  - component: {fileID: 1472552172}
+  - component: {fileID: 1472552174}
   m_Layer: 0
   m_Name: FirebaseManager
   m_TagString: Untagged
@@ -6374,34 +6374,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1472552172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472552171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a053b0b591afb374ca87112fbf9378d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dependencyStatus: 0
-  emailLoginField: {fileID: 0}
-  passwordLoginField: {fileID: 0}
-  warningLoginText: {fileID: 0}
-  confirmLoginText: {fileID: 0}
-  usernameRegisterField: {fileID: 0}
-  emailRegisterField: {fileID: 0}
-  passwordRegisterField: {fileID: 0}
-  passwordRegisterVerifyField: {fileID: 0}
-  warningRegisterText: {fileID: 0}
-  usernameField: {fileID: 0}
-  xpField: {fileID: 0}
-  killsField: {fileID: 0}
-  deathField: {fileID: 0}
-  scoreElement: {fileID: 0}
-  scoreboardContent: {fileID: 0}
 --- !u!4 &1472552173
 Transform:
   m_ObjectHideFlags: 0
@@ -6417,6 +6389,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1472552174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472552171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2aeed630311cb4983b3ce55c9bff0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1555324168
 GameObject:
   m_ObjectHideFlags: 0
@@ -7736,7 +7720,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1472552172}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: FirebaseManager, Assembly-CSharp
         m_MethodName: OnClickSave
         m_Mode: 1
@@ -7870,7 +7854,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1472552172}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: FirebaseManager, Assembly-CSharp
         m_MethodName: LoadButton
         m_Mode: 1

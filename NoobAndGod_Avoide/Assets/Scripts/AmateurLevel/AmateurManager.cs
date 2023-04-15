@@ -85,7 +85,7 @@ public class AmateurManager : MonoBehaviour
             highScore = value;
             resultHighScoreText.text = highScore.ToString();
             // 값이 변하면 UI도 변경하고 값을 저장
-            PlayerPrefs.SetInt(Constants.AmateurSaveString, highScore);
+            FireBaseManager3.instance.SaveData(Constants.AmateurSaveString, highScore);
         }
     }
 

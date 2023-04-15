@@ -103,7 +103,7 @@ public class NoobGameManager : MonoBehaviour
         if(score > highScore)
         {
             highScore = score;
-            PlayerPrefs.SetInt(Constants.NoobSaveString, score);
+            FireBaseManager3.instance.SaveData(Constants.NoobSaveString, highScore);
         }
 
         resultScoreText.text = score.ToString();

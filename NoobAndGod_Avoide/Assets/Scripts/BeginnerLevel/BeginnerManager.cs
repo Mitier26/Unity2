@@ -70,7 +70,8 @@ public class BeginnerManager : MonoBehaviour
         if(score > highScore)
         {
             highScore = (int)score;
-            PlayerPrefs.SetInt(Constants.BginnerSaveString, highScore);
+
+            FireBaseManager3.instance.SaveData(Constants.BginnerSaveString, highScore);
         }
         resultHighScoreText.text = highScore.ToString();
 

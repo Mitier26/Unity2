@@ -59,8 +59,8 @@ public class ProManager : MonoBehaviour
         get { return PlayerPrefs.GetInt(Constants.ProfessionalSaveString); }
         set
         {
-            PlayerPrefs.SetInt(Constants.ProfessionalSaveString, value);
             highScore = value;
+            FireBaseManager3.instance.SaveData(Constants.ProfessionalSaveString, highScore);
             resultHighScoreText.text = highScore.ToString();
         }
     }

@@ -58,7 +58,7 @@ public class GodGameManager : MonoBehaviour
         set 
         { 
             highScore = value;
-            PlayerPrefs.SetInt(Constants.GodSaveString, value);
+            FireBaseManager3.instance.SaveData(Constants.GodSaveString, highScore);
         }
     }
 

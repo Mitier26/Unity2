@@ -2653,6 +2653,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1346754430}
     m_Modifications:
+    - target: {fileID: 8771291731627495147, guid: 0a57eb00bf8c9694ab57b0c517f2692f, type: 3}
+      propertyPath: m_text
+      value: Stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771291731627495147, guid: 0a57eb00bf8c9694ab57b0c517f2692f, type: 3}
+      propertyPath: m_fontStyle
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 8771291732641451302, guid: 0a57eb00bf8c9694ab57b0c517f2692f, type: 3}
       propertyPath: m_Name
       value: GameOver

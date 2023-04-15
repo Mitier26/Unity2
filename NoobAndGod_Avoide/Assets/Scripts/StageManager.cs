@@ -18,5 +18,7 @@ public class StageManager : MonoBehaviour
         AmateurScore.text = (PlayerPrefs.HasKey(Constants.AmateurSaveString) == false ? 0 : PlayerPrefs.GetInt(Constants.AmateurSaveString)).ToString();
         ProfessionalScore.text = (PlayerPrefs.HasKey(Constants.ProfessionalSaveString) == false ? 0 : PlayerPrefs.GetInt(Constants.ProfessionalSaveString)).ToString();
         godScore.text = (PlayerPrefs.HasKey(Constants.GodSaveString) == false ? 0 : PlayerPrefs.GetInt(Constants.GodSaveString)).ToString();
+
+        FireBaseManager3.instance.LoadRank(Constants.NoobSaveString);
     }
 }

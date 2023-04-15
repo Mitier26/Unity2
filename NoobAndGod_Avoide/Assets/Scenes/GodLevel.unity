@@ -153,8 +153,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 597250269}
-  - {fileID: 1857199896}
   - {fileID: 1251027546}
+  - {fileID: 1857199896}
   m_Father: {fileID: 2113609745}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -33907,7 +33907,7 @@ RectTransform:
   m_Children:
   - {fileID: 487457039}
   m_Father: {fileID: 57650193}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -44243,7 +44243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main menu
+  m_text: Stage
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6206dcb98d78406438b5d38fe08d3d71, type: 2}
   m_sharedMaterial: {fileID: -77079294030434893, guid: 6206dcb98d78406438b5d38fe08d3d71, type: 2}
@@ -44699,7 +44699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
       propertyPath: m_AnchorMax.x
