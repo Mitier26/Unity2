@@ -155,6 +155,7 @@ public class ProManager : MonoBehaviour
 
     public void Gameover()
     {
+        resultHighScoreText.text = PlayerPrefs.GetInt(Constants.ProfessionalSaveString).ToString();
         isString = false;
         Time.timeScale = 0f;
         resultPanel.SetActive(true);

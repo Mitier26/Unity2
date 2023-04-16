@@ -128,6 +128,7 @@ public class FireBaseManager3 : MonoBehaviour
             else if (task.IsCompleted)
             {
                 // 등수 계산
+                // 이것은 그냥 전체 유저의 수를 나타낸다.
                  rank = ((int)task.Result.ChildrenCount).ToString();
              
                 Debug.Log("My rank in level " + levelString + " is " + rank);
