@@ -1,0 +1,1 @@
+public enum SceneName { TITLE, STAGE, NOOB, BEGIN, AMATEUR, PRO, GOD }

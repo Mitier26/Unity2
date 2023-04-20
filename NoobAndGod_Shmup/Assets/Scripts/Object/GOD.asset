@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b331bf211f12f5e498d3416cee1edbae, type: 3}
+  m_Name: GOD
+  m_EditorClassIdentifier: 
+  stageName: "\uC2E0"
+  stageBackground: "\uC694\uC0C8"
+  stageDescription: "\uD074\uB9AC\uC5B4 \uD558\uB77C\uACE0 \uB9CC\uB4E0 \uAC83\uC774
+    \uC544\uB2D9\uB2C8\uB2E4.\n\uD14C\uC2A4\uD2B8\uC6A9\uC785\uB2C8\uB2E4.\n\uCD5C\uACE0
+    \uC810\uC218\uC5D0 \uB3C4\uC804\uD558\uC138\uC694."
+  difficulty: 5
+  stageImage: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
