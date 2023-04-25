@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using TMPro;
@@ -62,23 +63,26 @@ public class StageManager : MonoBehaviour
             yield return null;
         }
 
+        // 선택한 레벨을 저장
+        GameManager.instance.SetStage(sceneName);
         // 씬 변경
-        SceneManager.LoadScene(sceneName);
-        // 어느 씬을 선택했는지 알아야 한다.
+        SceneManager.LoadScene(sceneName.ToString());
     }
 
 
     public ToggleGroup toggleGroup;
-    public string sceneName;
+    public SceneName sceneName;
 
     public void SelectStage()
     {
-        if (toggleGroup.ActiveToggles().FirstOrDefault() == null)
+        Toggle activeToggle = toggleGroup.ActiveToggles().FirstOrDefault();
+
+        if (activeToggle == null)
             return;
 
-        sceneName = toggleGroup.ActiveToggles().FirstOrDefault().gameObject.name;
+        sceneName = (SceneName)Enum.Parse(typeof(SceneName), activeToggle.gameObject.name);
 
-        UIChange(sceneName);
+        UIChange(sceneName.ToString());
     }
 
     private void UIChange(string stageName)
