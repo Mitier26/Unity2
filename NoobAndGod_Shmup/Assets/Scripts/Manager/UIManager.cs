@@ -59,6 +59,7 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         //resultScoreText.text = GameManager.instance.
+        Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
         GameManager.instance.isPlay = false;
 

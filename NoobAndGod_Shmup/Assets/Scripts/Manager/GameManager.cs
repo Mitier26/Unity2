@@ -35,7 +35,12 @@ public class GameManager : MonoBehaviour
     public void SetStage(SceneName stageName)
     {
         selectedStage = stageName;
+
+        if(stageScoreDict.ContainsKey(stageName))
+            stageScoreDict[stageName] = 0;
+        
         isPlay = true;
+        UIManager.instance.SetScore(0);
         UIManager.instance.SetGamePanel(true);
     }
 
@@ -55,9 +60,15 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            stageScoreDict.Add(selectedStage, score);
+            if (score <= 0)
+            {
+                stageScoreDict.Add(selectedStage, 0);
+            }
+            else
+            {
+                stageScoreDict.Add(selectedStage, score);
+            }
         }
-
         // UI에 표시한다.
         UIManager.instance.SetScore(stageScoreDict[selectedStage]);
     }

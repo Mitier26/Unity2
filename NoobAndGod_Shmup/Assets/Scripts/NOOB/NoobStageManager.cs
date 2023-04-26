@@ -7,12 +7,22 @@ public class NoobStageManager : MonoBehaviour
     [SerializeField] private GameObject enemyGroup;
     [SerializeField] private int enemyCount;
     public float level;
+    private float decreseSecond = 0.9f;
 
     // 기본 간격 = (최대값 - 최소값) / (단계수 -1)
     // 각 수치에서 기본 간격을 뺀다.
     private void Start()
     {
+        Time.timeScale = 1f;
         enemyCount = enemyGroup.transform.childCount;
+
+        StartCoroutine(DecreaseScore());
+    }
+
+    private IEnumerator DecreaseScore()
+    {
+        yield return new WaitForSeconds(decreseSecond);
+        GameManager.instance.SetScore(-0.9f);
     }
 
     public void DecreaseEnemyCount()
