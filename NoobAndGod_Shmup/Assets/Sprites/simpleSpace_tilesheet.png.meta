@@ -855,7 +855,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: simpleSpace_tilesheet_34
+      name: Asteroid_01
       rect:
         serializedVersion: 2
         x: 128
@@ -1023,7 +1023,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: simpleSpace_tilesheet_42
+      name: Damger
       rect:
         serializedVersion: 2
         x: 128
@@ -1159,6 +1159,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Asteroid_01: -1861416212
+      Damger: -1850336644
       EnemyBullet: -218497134
       Enemy_01: -1154577244
       Enemy_02: -212547918
@@ -1188,7 +1190,6 @@ TextureImporter:
       simpleSpace_tilesheet_30: -995132574
       simpleSpace_tilesheet_32: 932590517
       simpleSpace_tilesheet_33: 1034112450
-      simpleSpace_tilesheet_34: -1861416212
       simpleSpace_tilesheet_35: 2042997011
       simpleSpace_tilesheet_36: -1971851123
       simpleSpace_tilesheet_37: 1795798129
@@ -1197,7 +1198,6 @@ TextureImporter:
       simpleSpace_tilesheet_4: 741884504
       simpleSpace_tilesheet_40: 235405019
       simpleSpace_tilesheet_41: 511314293
-      simpleSpace_tilesheet_42: -1850336644
       simpleSpace_tilesheet_43: -1505155554
       simpleSpace_tilesheet_44: -617762291
       simpleSpace_tilesheet_45: 790951434

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoobStageManager : MonoBehaviour
+public class NoobManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemyGroup;
     [SerializeField] private int enemyCount;

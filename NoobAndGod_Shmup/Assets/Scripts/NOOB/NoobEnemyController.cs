@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class NoobEnemyController : MonoBehaviour
 {
-    [SerializeField] private NoobStageManager noobStageManager;
+    [SerializeField] private NoobManager noobStageManager;
     [SerializeField] private float score;
 
     private void Start()
     {
-        noobStageManager = FindObjectOfType<NoobStageManager>();
+        noobStageManager = FindObjectOfType<NoobManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

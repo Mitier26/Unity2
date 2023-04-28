@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 63789106}
   - component: {fileID: 63789107}
   m_Layer: 0
-  m_Name: NoobStageManager
+  m_Name: NoobManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

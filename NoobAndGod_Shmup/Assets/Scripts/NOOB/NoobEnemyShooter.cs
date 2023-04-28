@@ -9,11 +9,11 @@ public class NoobEnemyShooter : MonoBehaviour
     [SerializeField] private float bulletSpeed = 2f;
     [SerializeField] private float shootingTime;
     [SerializeField] private float shootingDelay = 2f;
-    [SerializeField] private NoobStageManager stageManager;
+    [SerializeField] private NoobManager stageManager;
 
     private void Start()
     {
-        stageManager = FindObjectOfType<NoobStageManager>();
+        stageManager = FindObjectOfType<NoobManager>();
         RandShooting();
     }
 
