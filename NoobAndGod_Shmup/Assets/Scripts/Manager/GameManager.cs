@@ -36,12 +36,13 @@ public class GameManager : MonoBehaviour
     {
         selectedStage = stageName;
 
+        // 스테이지를 시작 할 때 점수값이 저장되어 있다면 점수를 초기화한다.
         if(stageScoreDict.ContainsKey(stageName))
             stageScoreDict[stageName] = 0;
         
         isPlay = true;
-        UIManager.instance.SetScore(0);
-        UIManager.instance.SetGamePanel(true);
+        //UIManager.instance.SetScore(0);
+        //UIManager.instance.SetGamePanel(true);
     }
 
     // 선택한 씬에 따라 다른 점수를 사용하기 위한것이다.

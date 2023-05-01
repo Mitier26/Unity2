@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class UIManager : MonoBehaviour
     [Header("GAMING")]
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private Slider hpSlider;
+    [SerializeField] private Gradient gradient;
     [Header("PAUSE")]
     [SerializeField] private GameObject pausePanel;
     [Header("GAMEOVER")]
@@ -21,12 +24,18 @@ public class UIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
+    }
+
+    private void Start()
+    {
+        SetScore(0);        // 점수를 초기화 한다.
+        SetSlider(1);       // 슬라이더를 초기화 한다.
     }
 
     public void SetGamePanel(bool active)
@@ -39,6 +48,14 @@ public class UIManager : MonoBehaviour
     public void SetScore(float score)
     {
         scoreText.text = score.ToString();
+    }
+
+    public void SetSlider(float value)
+    {
+        // 슬라이더의 색을 값에 따라 변경한다.
+        hpSlider.fillRect.GetComponent<Image>().color = gradient.Evaluate(value);
+        // 슬라이더 바의 량을 변경한다.
+        hpSlider.value = value;
     }
 
     // 화면의 있는 일시정지 버튼을 눌렀을 때 실행한다.

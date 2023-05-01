@@ -4,23 +4,45 @@ using UnityEngine;
 
 public class BeginEnemySpawner : MonoBehaviour
 {
+    [SerializeField] private BeginManager manager;
+
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private GameObject[] spawnPrefabs;
     [SerializeField] private GameObject astroidPrefab;
     [SerializeField] private GameObject indicator;
 
-    [SerializeField] private int maxLevel = 40;
     [SerializeField] private int enemyCount = 1;
+    //[SerializeField] private float enemyHp = 3f;
     [SerializeField] private float enemySpeed;
     [SerializeField] private float spawnDelay;
     [SerializeField] private float elapsedTime;
     
     [SerializeField] private List<int> spawnIndex;
 
-    [Range(1, 40)]
-    public int testLevel = 1;
+    public int EnemyCount
+    {
+        get { return enemyCount; }
+        set { enemyCount = value; }
+    }
 
-    [SerializeField] private float levelupInterval = 6f;
+    //public float EnemyHp
+    //{
+    //    get { return enemyHp; }
+    //    set { enemyHp = value; }
+    //}
+
+    public float EnemySpeed
+    {
+        get { return enemySpeed; }
+        set { enemySpeed = value; }
+    }
+
+    public float SpawnDelay
+    {
+        get { return spawnDelay; }
+        set { spawnDelay = value; }
+    }
+
 
     private void Start()
     {
@@ -29,24 +51,9 @@ public class BeginEnemySpawner : MonoBehaviour
         // 적의 수를 관리하는 것은 다른 스크립트에서 한다. BeginManager
         spawnIndex = new List<int>();
 
-        StartCoroutine(LevelUpTimer());
         StartCoroutine(SpawnEnemys());
     }
 
-    private IEnumerator LevelUpTimer()
-    {
-        while (true)
-        {
-            if (enemyCount < 5)
-            {
-                if (testLevel % 3 == 0) enemyCount++;
-            }
-            spawnDelay = Mathf.Lerp(4, 1f, (float)testLevel / maxLevel);
-            enemySpeed = Mathf.Lerp(1, 4f, (float)testLevel / maxLevel);
-            testLevel = Mathf.Min(testLevel+1, maxLevel);
-            yield return new WaitForSeconds(levelupInterval);
-        }
-    }
 
     private IEnumerator SpawnEnemys()
     {
@@ -57,7 +64,10 @@ public class BeginEnemySpawner : MonoBehaviour
             // 소환되는 적의 수에 따라 적을 소환한다.
             for (int i = 0; i < enemyCount; i++)
             {
-                Instantiate(spawnPrefabs[0], spawnPoints[spawnIndex[i]].position, Quaternion.identity);
+                GameObject enemyObject = Instantiate(spawnPrefabs[manager.SelectEnemy()], spawnPoints[spawnIndex[i]].position, Quaternion.identity);
+
+                enemyObject.GetComponent<BeginEnemyMovement>().SetMoveSpeed(enemySpeed);
+                //enemyObject.GetComponent<BeginEnemy>().HP = enemyHp;
             }
 
             // 잠시 대기하고 다음 소환을 한다.
