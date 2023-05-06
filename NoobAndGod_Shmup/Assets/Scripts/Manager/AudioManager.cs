@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
 
     private void Init()
     {
-        GameObject bgmObject = new GameObject("BgmPlayer");
+        UnityEngine.GameObject bgmObject = new UnityEngine.GameObject("BgmPlayer");
         bgmObject.transform.parent = transform;
         bgmSource = bgmObject.AddComponent<AudioSource>();
         bgmSource.playOnAwake = false;
@@ -46,7 +46,7 @@ public class AudioManager : MonoBehaviour
         bgmSource.volume = bgmVolume;
         //bgmSource.clip = bgmClips[0];
 
-        GameObject sfxObject = new GameObject("SfxPlayer");
+        UnityEngine.GameObject sfxObject = new UnityEngine.GameObject("SfxPlayer");
         sfxObject.transform.parent = transform;
         sfxSources = new AudioSource[channels];
 

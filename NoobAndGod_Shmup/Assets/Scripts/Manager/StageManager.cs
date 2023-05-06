@@ -20,7 +20,7 @@ public class StageManager : MonoBehaviour
     public Image stageImage;
     public TextMeshProUGUI stageStartName;
     public TextMeshProUGUI stageStartNameShadow;
-    public GameObject stageConfirm;
+    public UnityEngine.GameObject stageConfirm;
 
     private IEnumerator Start()
     {

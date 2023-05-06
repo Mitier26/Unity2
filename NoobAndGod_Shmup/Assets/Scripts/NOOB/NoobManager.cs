@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NoobManager : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyGroup;
+    [SerializeField] private UnityEngine.GameObject enemyGroup;
     [SerializeField] private int enemyCount;
     public float level;
     private float decreseSecond = 0.9f;

@@ -44,7 +44,7 @@ public class NoobPlayerController : MonoBehaviour
         {
             shootingTime = 0;
             AudioManager.instance.PlaySfx(SFX.P_Shoot);
-            GameObject go = Instantiate(bulletPrefab.gameObject, transform.position, Quaternion.identity);
+            UnityEngine.GameObject go = Instantiate(bulletPrefab.gameObject, transform.position, Quaternion.identity);
 
             if (go.TryGetComponent(out NoobProjectile projectile))
             {

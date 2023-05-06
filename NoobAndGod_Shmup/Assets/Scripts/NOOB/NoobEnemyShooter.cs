@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NoobEnemyShooter : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private UnityEngine.GameObject bulletPrefab;
     [SerializeField] private Transform playerController;
     [SerializeField] private float bulletSpeed = 2f;
     [SerializeField] private float shootingTime;

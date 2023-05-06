@@ -7,9 +7,9 @@ public class BeginEnemySpawner : MonoBehaviour
     [SerializeField] private BeginManager manager;
 
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private GameObject[] spawnPrefabs;
-    [SerializeField] private GameObject astroidPrefab;
-    [SerializeField] private GameObject indicator;
+    [SerializeField] private UnityEngine.GameObject[] spawnPrefabs;
+    [SerializeField] private UnityEngine.GameObject astroidPrefab;
+    [SerializeField] private UnityEngine.GameObject indicator;
 
     [SerializeField] private int enemyCount = 1;
     //[SerializeField] private float enemyHp = 3f;
@@ -64,7 +64,7 @@ public class BeginEnemySpawner : MonoBehaviour
             // 소환되는 적의 수에 따라 적을 소환한다.
             for (int i = 0; i < enemyCount; i++)
             {
-                GameObject enemyObject = Instantiate(spawnPrefabs[manager.SelectEnemy()], spawnPoints[spawnIndex[i]].position, Quaternion.identity);
+                UnityEngine.GameObject enemyObject = Instantiate(spawnPrefabs[manager.SelectEnemy()], spawnPoints[spawnIndex[i]].position, Quaternion.identity);
 
                 enemyObject.GetComponent<BeginEnemyMovement>().SetMoveSpeed(enemySpeed);
                 //enemyObject.GetComponent<BeginEnemy>().HP = enemyHp;

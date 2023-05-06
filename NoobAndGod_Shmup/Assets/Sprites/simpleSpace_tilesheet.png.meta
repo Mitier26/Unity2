@@ -1128,7 +1128,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: simpleSpace_tilesheet_47
+      name: Thrust
       rect:
         serializedVersion: 2
         x: 448
@@ -1168,6 +1168,7 @@ TextureImporter:
       Enemy_04: 678660108
       Player: -1590421207
       PlayerBullet: -500126395
+      Thrust: -1411407993
       simpleSpace_tilesheet_0: 1196019614
       simpleSpace_tilesheet_10: -715427144
       simpleSpace_tilesheet_12: -42602246
@@ -1202,7 +1203,6 @@ TextureImporter:
       simpleSpace_tilesheet_44: -617762291
       simpleSpace_tilesheet_45: 790951434
       simpleSpace_tilesheet_46: 1032430147
-      simpleSpace_tilesheet_47: -1411407993
       simpleSpace_tilesheet_6: 1638934411
       simpleSpace_tilesheet_7: 1982064297
       simpleSpace_tilesheet_8: -471169186

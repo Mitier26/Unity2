@@ -27,7 +27,7 @@ namespace Frosttale_Studios_Assets
             //Create SafeArea in all canvases in scene
             for (int i = 0; i < allCanvases.Length; i++)
             {
-                var safeArea = new GameObject();
+                var safeArea = new UnityEngine.GameObject();
                 safeArea.transform.parent = allCanvases[i].transform;
                 safeArea.name = "SafeArea";
                 safeArea.AddComponent<RectTransform>();

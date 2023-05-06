@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
     // 점수는 GameManager 에서 가지고 온다.
     public void SetScore(float score)
     {
-        scoreText.text = score.ToString();
+        scoreText.text = score.ToString("F0");
     }
 
     public void SetSlider(float value)
@@ -85,8 +85,8 @@ public class UIManager : MonoBehaviour
 
     public void SetResult(float currentScore, float highScore)
     {
-        resultScoreText.text = currentScore.ToString();
-        resultHighScoreText.text = highScore.ToString();
+        resultScoreText.text = currentScore.ToString("F0");
+        resultHighScoreText.text = highScore.ToString("F0");
     }
 
 
