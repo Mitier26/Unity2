@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class ProEnemyMovement : MonoBehaviour
 {
     NavMeshAgent agent;
+    private SpriteRenderer spriteRenderer;
     public Transform[] waypoints;
     public int wayIndex;
     public Vector3 destination;
@@ -19,6 +20,8 @@ public class ProEnemyMovement : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
@@ -57,6 +60,11 @@ public class ProEnemyMovement : MonoBehaviour
                
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        spriteRenderer.flipX = agent.velocity.x < 0f;
     }
 
     private void SetRandomWaypoint()

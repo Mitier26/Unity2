@@ -8,6 +8,8 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - Coin
+  - Mine
+  - Center
   layers:
   - Default
   - TransparentFX

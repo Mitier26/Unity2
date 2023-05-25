@@ -140,3 +140,4 @@ MonoBehaviour:
   rb: {fileID: 0}
   idName: Bullet
   power: 0
+  activeTime: 2

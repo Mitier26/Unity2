@@ -8,6 +8,8 @@ public class ProGameManager : MonoBehaviour
     public static ProGameManager instance;      // 게임 메니져 싱글톤
     public PoolManager poolManager;             // 새로 생성되는 적들이 poolManager를 연결하기 위한 것
     public GameObject points;                   // 새로 생성되는 적들이 이동하는 위치를 연결하기 위한 것
+    public Transform[] minePoints;
+    public GameObject command;
 
     public int enemyGold;                       // 적의 돈
     public int enemyCount;                      // 적의 수

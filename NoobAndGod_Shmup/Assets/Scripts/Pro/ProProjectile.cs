@@ -10,6 +10,7 @@ public class ProProjectile : MonoBehaviour, IPoolObject
 
     public string idName;
     public float power;
+    public float activeTime = 2;
 
     void IPoolObject.OnCreatedInPool()
     {
@@ -22,7 +23,7 @@ public class ProProjectile : MonoBehaviour, IPoolObject
 
     private IEnumerator TakePool()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(activeTime);
         poolManager.TakeToPool<ProProjectile>(idName, this);
         yield break;
     }
