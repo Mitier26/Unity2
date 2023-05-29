@@ -46,6 +46,11 @@ public class ProEnemyMovement : MonoBehaviour
         isMoved = true;
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     private void Update()
     {
         if (isMoved)

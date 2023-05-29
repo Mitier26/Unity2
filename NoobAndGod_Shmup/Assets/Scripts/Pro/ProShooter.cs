@@ -45,6 +45,7 @@ public class ProShooter : MonoBehaviour
 
                 // 생성된거나 풀에서 가지고온 총알의 위치를 초기화 하고 이동 시킨다.
                 go.transform.position = transform.position;
+                go.tag = "PlayerBullet";
                 go.GetComponent<Rigidbody2D>().velocity = direction * speed;
                 go.power = power;
             }

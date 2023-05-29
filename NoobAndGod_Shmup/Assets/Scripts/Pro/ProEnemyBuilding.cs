@@ -22,32 +22,38 @@ public class ProEnemyBuilding : MonoBehaviour
     private void Start()
     {
         slider.gameObject.SetActive(false);
-        StartCoroutine(ProduceUnit());
+        StartCoroutine(CheckCommand());
         hp = maxHp;
     }
 
-    private IEnumerator ProduceUnit()
+    private IEnumerator CheckCommand()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (isCenter && ProGameManager.instance.enemyWorkerCount < ProGameManager.instance.enemyWorkerMaxCount)
+        {
+            yield return StartCoroutine(ProductUnit());
+        }
+        else if(!isCenter && ProGameManager.instance.enemyCount < ProGameManager.instance.enemyMaxCount)
+        {
+            yield return StartCoroutine(ProductUnit());
+        }
+        else
+        {
+            yield return StartCoroutine(CheckCommand());
+        }
+       
+    }
+
+    private IEnumerator ProductUnit()
     {
         elapsedTime = 0;
-        int randUnit = Random.Range(0, produceTime.Length);
-
-        if (isCenter && ProGameManager.instance.enemyWorkerCount >= ProGameManager.instance.enemyWorkerMaxCount)
-        {
-            yield return new WaitForSeconds(2f);
-            yield return StartCoroutine(ProduceUnit());
-        }
-           
-
-        if(!isCenter && ProGameManager.instance.enemyCount >= ProGameManager.instance.enemyMaxCount)
-        {
-            yield return new WaitForSeconds(2f);
-            yield return StartCoroutine(ProduceUnit());
-        }
-
-        slider.gameObject.SetActive(true);
+        int randUnit = Random.Range(0, produceObject.Length);
 
         if (ProGameManager.instance.enemyGold >= produceGold[randUnit])
         {
+            slider.gameObject.SetActive(true);
+
             ProGameManager.instance.enemyGold -= produceGold[randUnit];
 
             while (elapsedTime <= produceTime[randUnit])
@@ -59,9 +65,13 @@ public class ProEnemyBuilding : MonoBehaviour
 
             CreateUnit(randUnit);
         }
+        else
+        {
+            yield return StartCoroutine(CheckCommand());
+        }
 
         slider.gameObject.SetActive(false);
-        yield return StartCoroutine(ProduceUnit());
+        yield return StartCoroutine(CheckCommand());
     }
 
 

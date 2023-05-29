@@ -57,7 +57,10 @@ public class ProEnemyUnit : MonoBehaviour, IPoolObject
         state = STATE.Idle;
         shooter.SetActive(false);
         target = null;
-        StartCoroutine(Idle());
+        // 유닛이 사라질 때 Idle 이 실행된다.
+        // 그러면 오브젝트가 없는데 코루티을 실행한다고 에러가 생긴다.
+        if(gameObject.activeSelf)
+            StartCoroutine(Idle());
     }
 
     private IEnumerator Idle()

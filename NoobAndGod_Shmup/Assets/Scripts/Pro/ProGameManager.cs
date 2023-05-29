@@ -34,4 +34,21 @@ public class ProGameManager : MonoBehaviour
             instance = this;
         }
     }
+
+    private void Start()
+    {
+        StartGame();
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1.0f;
+    }
+
+    public void GameOver()
+    {
+        // 게임이 종료되면 결과 화면을 보여준다.
+        // 멈춘다.
+        Time.timeScale = 0f;
+    }
 }
