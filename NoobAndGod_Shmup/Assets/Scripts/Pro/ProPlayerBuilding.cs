@@ -10,6 +10,8 @@ public class ProPlayerBuilding : MonoBehaviour
     public float maxHp;
     public float hp;
 
+    public int maxHpLevel;
+
     private void Start()
     {
         poolManager = ProGameManager.instance.poolManager;
@@ -31,5 +33,11 @@ public class ProPlayerBuilding : MonoBehaviour
                 ProGameManager.instance.GameOver();
             }
         }
+    }
+
+    public void AddHp()
+    {
+        maxHpLevel++;
+        maxHp += 100;
     }
 }
