@@ -6,16 +6,24 @@ public class NoobTarget : MonoBehaviour
 {
     // x = 8, y = 4
 
-    float size = 9f;
+    public float maxSize = 9f;
+    public float minSize = 0.5f;
+    public float currentSize;
 
     private void Start()
     {
+        Init();
+    }
+
+    public void Init()
+    {
+        currentSize = maxSize;
         Reposition();
     }
 
     public void Reposition()
     {
-        transform.localScale = Vector3.one * size;
+        transform.localScale = Vector3.one * SetScale(NoobGameManager.instance.Combo);
 
         float x, y;
 
@@ -25,9 +33,9 @@ public class NoobTarget : MonoBehaviour
         transform.position = new Vector2(x, y);
     }
 
-    public void SetScale(int level)
+    public float SetScale(int level)
     {
         // 0.5 ~ 9
-        size = Mathf.Lerp(9f, 0.5f, (float)level / 20);
+        return currentSize = Mathf.Lerp(maxSize, minSize, (float)level / NoobGameManager.instance.maxCombo);
     }
 }
